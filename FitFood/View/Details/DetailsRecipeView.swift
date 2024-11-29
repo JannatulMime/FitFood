@@ -69,7 +69,7 @@ extension DetailsRecipeView {
             
             Spacer()
             
-            Image(systemName: "heart.fill")
+            Image(systemName: SystemImage.heart_fill )
                 .resizable()
                 .frame(width: 20, height: 18)
                 .foregroundStyle(Color.theme.red)

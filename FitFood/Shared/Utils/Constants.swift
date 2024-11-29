@@ -19,3 +19,6 @@ struct Fonts {
     static let outfitRegular = "Outfit-Regular"
 }
 
+struct SystemImage{
+    static let heart_fill = "heart.fill"
+}
