@@ -61,7 +61,8 @@ extension DetailsRecipeView {
     var recipeTitle: some View {
         HStack {
             Text("Fruit Dessert")
-                .font(.title2)
+                //.font(.title2)
+                .modifier(SystemFontRegular(fontSize: FontSize.ExtraLarge.rawValue))
                 .fontWeight(.bold)
                 .foregroundStyle(Color.theme.darkOrange)
                 .lineLimit(2)
