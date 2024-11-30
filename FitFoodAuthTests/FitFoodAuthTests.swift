@@ -54,50 +54,23 @@ public class AuthClientSpy: AuthClient {
 
 final class FitFoodAuthTests: XCTestCase {
     func test_createAccount_NotCalledInitially() {
-        let sut = AuthClientSpy()
+        let (_,client) = makeSUT()
 
-        XCTAssertEqual(sut.messages.count, 0)
+        XCTAssertEqual(client.messages.count, 0)
     }
 
     func test_createAccount_SuccessWithEmailAndPassword() {
         let (sut, client) = makeSUT()
-        let sentUser = anyUser()
-        var receivedUser: User?
-        let exp = expectation(description: "Wait for Account Creation")
-
-        sut.createAccount(email: sentUser.email, password: "123456", completion: { result in
-            switch result {
-            case let .success(user):
-                receivedUser = user
-            default:
-                break
-            }
-            exp.fulfill()
-        })
-
-        client.completeWithSuccess(user: sentUser)
-        XCTAssertEqual(receivedUser, sentUser)
-        wait(for: [exp], timeout: 1.0)
+        expect(sut: sut, toCompleteWith: .success(anyUser())) {
+            client.completeWithSuccess(user: anyUser())
+        }
     }
 
     func test_createAccount_SentErrorInAccountCreationFail() {
         let (sut, client) = makeSUT()
-        var receivedError: NSError?
-        let exp = expectation(description: "Wait for Account Creation")
-
-        sut.createAccount(email: "", password: "123456", completion: { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error as NSError
-            default:
-                break
-            }
-            exp.fulfill()
-        })
-
-        client.completeWithError(error: anyNSError())
-        XCTAssertEqual(receivedError?.code, anyNSError().code)
-        wait(for: [exp], timeout: 1.0)
+        expect(sut: sut, toCompleteWith: .failure(anyNSError())) {
+            client.completeWithError(error: anyNSError())
+        }
     }
 
     // MARK: - Helpers
@@ -107,6 +80,38 @@ final class FitFoodAuthTests: XCTestCase {
         let sut = FirebaseAuthManager(client: client)
 
         return (sut: sut, client: client)
+    }
+    
+    func expect(
+        sut : FirebaseAuthManager,
+        toCompleteWith expectedResult : AuthClient.Result,
+        when action: () -> Void ,
+        file: StaticString = #file,
+        line: UInt = #line){
+        
+        let exp = expectation(description: "Wait for Account Creation")
+        
+        sut.createAccount(email: "", password: "123456", completion: { receivedResult in
+            
+            switch(receivedResult,expectedResult){
+            case let (.success(receivedUser), .success(expectedUser)):
+                XCTAssertEqual(receivedUser, expectedUser, file: file, line: line)
+                break
+                
+            case let (.failure(receivedError),.failure(expectedError)):
+                XCTAssertEqual(receivedError as NSError, expectedError as NSError, file: file, line: line)
+                break
+                
+            default:
+                XCTFail("Expected result: \(receivedResult) got \(receivedResult)", file: file, line: line)
+            }
+       
+            exp.fulfill()
+        })
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
     }
 
     func anyUser() -> User {
