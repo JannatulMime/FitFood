@@ -14,7 +14,7 @@ public struct User: Equatable {
 
 public protocol AuthClient {
     typealias Result = Swift.Result<User, Error>
-    func createAccount(email: String, password: String, completion: @escaping (Result) -> Void)
+    func createAccount(completion: @escaping (Result) -> Void)
 }
 
 public class AuthManager {
@@ -24,8 +24,8 @@ public class AuthManager {
         self.client = client
     }
 
-    func createAccount(email: String, password: String, completion: @escaping (AuthClient.Result) -> Void) {
-        client.createAccount(email: email, password: password) { result in
+    func createAccount( completion: @escaping (AuthClient.Result) -> Void) {
+        client.createAccount() { result in
             switch result {
             case let .success(user):
                 completion(.success(user))
@@ -36,19 +36,38 @@ public class AuthManager {
     }
 }
 
-public class AuthManagerSpy: AuthClient {
-    var messages = [(email: String, completion: (AuthClient.Result) -> Void)]()
+//public class FirebaseAuthManager : AuthClient {
+//    let client: AuthClient
+//
+//    init(email: String, password: String) {
+//        self.client = client
+//    }
+//
+//    func createAccount(email: String, password: String, completion: @escaping (AuthClient.Result) -> Void) {
+//        client.createAccount(email: email, password: password) { result in
+//            switch result {
+//            case let .success(user):
+//                completion(.success(user))
+//            case let .failure(error):
+//                completion(.failure(error))
+//            }
+//        }
+//    }
+//}
 
-    public func createAccount(email: String, password: String, completion: @escaping (AuthClient.Result) -> Void) {
-        messages.append((email, completion))
+public class AuthManagerSpy: AuthClient {
+    var messages = [(AuthClient.Result) -> Void]()
+
+    public func createAccount(completion: @escaping (AuthClient.Result) -> Void) {
+        messages.append(completion)
     }
 
     func completeWithSuccess(user: User, at index: Int = 0) {
-        messages[index].completion(.success(user))
+        messages[index](.success(user))
     }
 
     func completeWithError(error: Error, at index: Int = 0) {
-        messages[index].completion(.failure(error))
+        messages[index](.failure(error))
     }
 }
 
@@ -91,7 +110,7 @@ final class FitFoodAuthTests: XCTestCase {
         
         let exp = expectation(description: "Wait for Account Creation")
         
-        sut.createAccount(email: "", password: "123456", completion: { receivedResult in
+        sut.createAccount( completion: { receivedResult in
             
             switch(receivedResult,expectedResult){
             case let (.success(receivedUser), .success(expectedUser)):
