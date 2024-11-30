@@ -13,13 +13,12 @@ struct TextInCapsule: View {
     var body: some View {
         
         Text(text)
-            .font(.caption)
-            .fontWeight(.bold)
+            .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
             .foregroundStyle(.white)
-            .frame(height: 8)
+            .frame(height: 10)
             .padding(10)
             .background(Color.theme.lightOrange)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

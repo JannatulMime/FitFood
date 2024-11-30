@@ -21,7 +21,7 @@ struct DetailsRecipeView: View {
                 
                 // Spacer()
                 
-                VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading, spacing: 20) {
                     Spacer()
                     recipeTitle
                     typeButton
@@ -61,8 +61,7 @@ extension DetailsRecipeView {
     var recipeTitle: some View {
         HStack {
             Text("Fruit Dessert")
-                .modifier(RegularFont(fontSize: FontSize.ExtraLarge.rawValue))
-               // .fontWeight(.bold)
+                .modifier(BoldFont(fontSize: FontSize.ExtraLarge.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
                 .lineLimit(2)
             
@@ -70,7 +69,7 @@ extension DetailsRecipeView {
             
             Image(systemName: SystemImage.heart_fill )
                 .resizable()
-                .frame(width: 20, height: 18)
+                .frame(width: 23, height: 20)
                 .foregroundStyle(Color.theme.red)
         }
     }
@@ -96,19 +95,18 @@ extension DetailsRecipeView {
     var ingredients: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text ("Ingredients")
-                .font(.system(size: 15))
-                .fontWeight(.bold)
+                .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
             ForEach(0..<5) { type in
                 HStack {
                     Image(systemName: "checkmark.seal.fill")
                         .resizable()
-                        .frame(width: 15, height: 15)
+                        .frame(width: 20, height: 20)
                         .foregroundStyle(Color.theme.mediumOrange)
                     
                     Text("200g orange fruit plump")
-                        .font(.system(size: 10))
+                        .modifier(LightFont(fontSize: FontSize.Small.rawValue))
                     
                 }
             }
@@ -120,12 +118,11 @@ extension DetailsRecipeView {
     var instructions: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text ("Instructions")
-                .font(.system(size: 15))
-                .fontWeight(.bold)
+                .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
             Text("Bring the fruit to a simmer and cook for 10 minutes until tender. Remove from the heat and let cool. Blend until smooth. Serve immediately. (This recipe makes about 1.5 cups of pureed fruit. You can also use this pureed fruit to make a fruit salad or ice cream. The pureed fruit can be stored in the refrigerator for up to 3 days.")
-                .font(.system(size: 10))
+                .modifier(LightFont(fontSize: FontSize.Small.rawValue))
                 .multilineTextAlignment(.leading)
                 .lineLimit(isViewed ? 20 : 3)
             
@@ -133,7 +130,7 @@ extension DetailsRecipeView {
                
                     isViewed.toggle()
             }
-            .font(.system(size: 10, weight: .semibold))
+            .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
             .foregroundStyle(Color.theme.red)
         }
     }

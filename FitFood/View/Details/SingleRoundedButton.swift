@@ -14,10 +14,10 @@ struct SingleRoundedButton: View {
     var body: some View {
         VStack(alignment: .center) {
             Text(text)
-                .font(.system(size: 13))
+                .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
               
             Text(textOutput)
-                .font(.system(size: 10))
+                .modifier(RegularFont(fontSize: FontSize.ExtraSmall.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
             
         }.frame(width: 100, height: 50)

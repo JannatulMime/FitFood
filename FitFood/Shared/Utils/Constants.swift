@@ -11,15 +11,15 @@ enum FontSize : CGFloat {
     case ExtraLarge = 28.0
     case Large = 24.0
     case Regular = 20.0
-    case Small = 16.0
+    case Small = 15.0
     case ExtraSmall = 10.0
 }
 
 struct Fonts {
+    static let parkinsansLight = "Parkinsans-Light"
     static let parkinsansRegular = "Parkinsans-Regular"
-//    static let parkinsansRegular = "Parkinsans-Regular"
-//    static let parkinsansRegular = "Parkinsans-Regular"
-//    static let parkinsansRegular = "Parkinsans-Regular"
+    static let parkinsansSemiBold = "Parkinsans-SemiBold"
+    static let parkinsansBold = "Parkinsans-Bold"
 //    static let parkinsansRegular = "Parkinsans-Regular"
 }
 

@@ -15,12 +15,22 @@ extension Font {
     
     struct Parkinsans {
         
+        func light(size : CGFloat) -> Font{
+            return Font.custom(Fonts.parkinsansLight, size: size)
+        }
+        
         func regular(size : CGFloat) -> Font{
             return Font.custom(Fonts.parkinsansRegular, size: size)
         }
         
+        
         func semiBold(size : CGFloat) -> Font{
-            return Font.custom(Fonts.parkinsansRegular, size: size)
+            return Font.custom(Fonts.parkinsansSemiBold, size: size)
+        }
+        
+        
+        func bold(size : CGFloat) -> Font{
+            return Font.custom(Fonts.parkinsansBold, size: size)
         }
     }
     

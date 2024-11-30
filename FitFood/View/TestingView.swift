@@ -10,7 +10,7 @@ import SwiftUI
 struct TestingView: View {
     var body: some View {
         Text("Hello World, World!")
-            .font(Font.custom("Parkinsans-Light", size: 10))
+            .font(Font.custom("Parkinsans-Light", size: 20))
             .foregroundStyle(.green)
         
         Text("Hello World, World!")
@@ -18,11 +18,12 @@ struct TestingView: View {
             .foregroundStyle(Color.theme.mediumOrange)
         
         Text("Hello World, World!")
-            .font(Font.custom("Parkinsans-SemiBold", size: 30))
+            .modifier(LightFont(fontSize: FontSize.ExtraLarge.rawValue))
             .foregroundStyle(Color.theme.darkGray)
         
         Text("Hello World, World!")
-            .font(Font.custom("Parkinsans-Bold", size: 40))
+           // .font(Font.custom("Parkinsans-Bold", size: 40))
+            .modifier(BoldFont(fontSize: FontSize.ExtraLarge.rawValue))
             .foregroundStyle(Color.theme.lightOrange)
     }
 }
