@@ -17,7 +17,7 @@ public protocol AuthClient {
     func createAccount(email: String, password: String, completion: @escaping (Result) -> Void)
 }
 
-public class FirebaseAuthManager {
+public class AuthManager {
     let client: AuthClient
 
     init(client: AuthClient) {
@@ -36,7 +36,7 @@ public class FirebaseAuthManager {
     }
 }
 
-public class AuthClientSpy: AuthClient {
+public class AuthManagerSpy: AuthClient {
     var messages = [(email: String, completion: (AuthClient.Result) -> Void)]()
 
     public func createAccount(email: String, password: String, completion: @escaping (AuthClient.Result) -> Void) {
@@ -75,15 +75,15 @@ final class FitFoodAuthTests: XCTestCase {
 
     // MARK: - Helpers
 
-    func makeSUT() -> (sut: FirebaseAuthManager, client: AuthClientSpy) {
-        let client = AuthClientSpy()
-        let sut = FirebaseAuthManager(client: client)
+    func makeSUT() -> (sut: AuthManager, client: AuthManagerSpy) {
+        let client = AuthManagerSpy()
+        let sut = AuthManager(client: client)
 
         return (sut: sut, client: client)
     }
     
     func expect(
-        sut : FirebaseAuthManager,
+        sut : AuthManager,
         toCompleteWith expectedResult : AuthClient.Result,
         when action: () -> Void ,
         file: StaticString = #file,
