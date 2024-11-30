@@ -16,9 +16,29 @@ enum FontSize : CGFloat {
 }
 
 struct Fonts {
-    static let outfitRegular = "Outfit-Regular"
+    static let parkinsansRegular = "Parkinsans-Regular"
+//    static let parkinsansRegular = "Parkinsans-Regular"
+//    static let parkinsansRegular = "Parkinsans-Regular"
+//    static let parkinsansRegular = "Parkinsans-Regular"
+//    static let parkinsansRegular = "Parkinsans-Regular"
 }
 
 struct SystemImage{
     static let heart_fill = "heart.fill"
 }
+
+//Text("Hello World, World!")
+//    .font(Font.custom("Parkinsans-Light", size: 10))
+//    .foregroundStyle(.green)
+//
+//Text("Hello World, World!")
+//    .font(Font.custom("Parkinsans-Regular", size: 20))
+//    .foregroundStyle(Color.theme.mediumOrange)
+//
+//Text("Hello World, World!")
+//    .font(Font.custom("Parkinsans-SemiBold", size: 30))
+//    .foregroundStyle(Color.theme.darkGray)
+//
+//Text("Hello World, World!")
+//    .font(Font.custom("Parkinsans-Bold", size: 40))
+//    .foregroundStyle(Color.theme.lightOrange)

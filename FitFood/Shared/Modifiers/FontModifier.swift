@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FontOutfitRegular: ViewModifier {
+struct RegularFont: ViewModifier {
     var fontSize: CGFloat
     func body(content: Content) -> some View {
         content
@@ -16,10 +16,12 @@ struct FontOutfitRegular: ViewModifier {
     }
 }
 
-struct SystemFontRegular: ViewModifier {
-    var fontSize: CGFloat
-    func body(content: Content) -> some View {
-        content
-            .font(Font.SystemFont().regular(size: fontSize))
-    }
-}
+
+
+//struct SystemFontRegular: ViewModifier {
+//    var fontSize: CGFloat
+//    func body(content: Content) -> some View {
+//        content
+//            .font(Font.SystemFont().regular(size: fontSize))
+//    }
+//}

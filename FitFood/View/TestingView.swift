@@ -10,9 +10,20 @@ import SwiftUI
 struct TestingView: View {
     var body: some View {
         Text("Hello World, World!")
-            //.font(Font.custom("Outfit-Thin_Light", size: 20))
-            .font(Font.font.regular(size: 35))
-            .foregroundStyle(Color.theme.red)
+            .font(Font.custom("Parkinsans-Light", size: 10))
+            .foregroundStyle(.green)
+        
+        Text("Hello World, World!")
+            .font(Font.custom("Parkinsans-Regular", size: 20))
+            .foregroundStyle(Color.theme.mediumOrange)
+        
+        Text("Hello World, World!")
+            .font(Font.custom("Parkinsans-SemiBold", size: 30))
+            .foregroundStyle(Color.theme.darkGray)
+        
+        Text("Hello World, World!")
+            .font(Font.custom("Parkinsans-Bold", size: 40))
+            .foregroundStyle(Color.theme.lightOrange)
     }
 }
 

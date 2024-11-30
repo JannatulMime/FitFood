@@ -11,12 +11,16 @@ import SwiftUI
 
 extension Font {
     
-    static let font = SystemFont()
+    static let font = Parkinsans()
     
-    struct Font1 {
+    struct Parkinsans {
         
         func regular(size : CGFloat) -> Font{
-            return Font.custom(Fonts.outfitRegular, size: size)
+            return Font.custom(Fonts.parkinsansRegular, size: size)
+        }
+        
+        func semiBold(size : CGFloat) -> Font{
+            return Font.custom(Fonts.parkinsansRegular, size: size)
         }
     }
     
