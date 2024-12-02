@@ -12,15 +12,17 @@ struct HomeView: View {
     @State var searchText: String = ""
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 25) {
-            profileNameAndImage
-            searchBar
-            catagories
-            poplularSection
-            todaysSection
-            
-            Spacer()
-        }.padding(.horizontal, 30)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 25) {
+                profileNameAndImage
+                searchBar
+                catagories
+                poplularSection
+                todaysSection
+                
+                Spacer()
+            }.padding(.horizontal, 30)
+        }
     }
 }
 
@@ -35,6 +37,7 @@ extension HomeView {
             Text("Welcome,\(userName)")
                 .modifier(BoldFont(fontSize: FontSize.Large.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
+                
             
             Spacer()
             
@@ -58,7 +61,7 @@ extension HomeView {
     }
     
     var catagories: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Catagories")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
@@ -69,14 +72,14 @@ extension HomeView {
                         SingleCatagoryButton(catagory: "Breakfast", image: "Orange")
                     }
                     
-                }.padding(.vertical)
+                }
             }
         }
     }
     
     var poplularSection: some View {
         
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Popular")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
@@ -87,16 +90,26 @@ extension HomeView {
                         SinglePopularSection(recipeImage: "Applepie", recipeName: "ApplePie", calories: "320cal", time: "20min")
                     }
                     
-                }.padding(.vertical)
+                }
             }
         }
     }
     
     var todaysSection: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 15) {
             Text("Today's recipe")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
+            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 15) {
+                    ForEach(0..<5) { type in
+                        SingleTodaysRecipe(recipeImage: "Orange", recipeName: "Blueberry Cookies", calories: "240cal", time: "15min")
+                    }
+                    
+                    
+                }//.padding()
+            }
             
         }
     }

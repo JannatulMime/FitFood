@@ -16,6 +16,7 @@ struct SinglePopularSection: View {
     var body: some View {
         VStack {
             Spacer()
+                .frame(height: 15)
             
             Image(recipeImage)
                 .resizable()
@@ -25,7 +26,7 @@ struct SinglePopularSection: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text(recipeName)
-                    .modifier(SemiBoldFont(fontSize: FontSize.ExtraSmall.rawValue))
+                    .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
                     .foregroundColor(Color.theme.darkOrange)
                 
                 Text(calories)
@@ -36,16 +37,16 @@ struct SinglePopularSection: View {
                     
                 
                 viewAndDuration
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 5)
             }.padding(.all, 10)
             
-        }.frame(width: 140, height: 200)
-            .background(Color.white)
-          .cornerRadius(8)
-          .shadow(color: Color.theme.lightGray, radius: 5, x: 0, y: 1)
-         
-            
-            
+        }.frame(width: 150, height: 190)
+
+          .background(RoundedRectangle(cornerRadius: 10).fill(.white)
+              //.shadow(color: Color.theme.lightGray, radius: 5, x: -2, y: 3)
+              .strokeBorder(Color.theme.lightGray, lineWidth: 0.8)
+              .shadow(color: Color.theme.lightGray, radius: 3, x: 0, y: 2)
+          )
     }
 }
 

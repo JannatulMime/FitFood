@@ -22,7 +22,8 @@ struct SingleRoundedButton: View {
             
         }.frame(width: 100, height: 50)
         .background(RoundedRectangle(cornerRadius: 15).fill(.white)
-            .shadow(color: Color.theme.lightGray, radius: 2, x: 0, y: 1)
+           // .shadow(color: Color.theme.lightGray, radius: 2, x: 0, y: 1)
+            .strokeBorder(Color.theme.lightGray, lineWidth: 0.8)
         )
     }
 }

@@ -35,7 +35,6 @@ struct DetailsRecipeView: View {
                 .frame(maxHeight: .infinity)
                 .padding(.all, 15)
                 .background(Color.white)
-                
                 .cornerRadius(20)
                 .shadow(color: Color.theme.darkGray, radius: 5, x: 0, y: 3)
                 .offset(y:-70)

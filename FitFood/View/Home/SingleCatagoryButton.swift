@@ -30,8 +30,8 @@ struct SingleCatagoryButton: View {
         }.padding()
         .frame(height: 50)
         .background(RoundedRectangle(cornerRadius: 15).fill(.white)
-            .shadow(color: Color.theme.lightGray, radius: 5, x: -2, y: 3)
-           
+            //.shadow(color: Color.theme.lightGray, radius: 5, x: -2, y: 3)
+            .strokeBorder(Color.theme.lightGray, lineWidth: 0.8)
         )
         
     }
