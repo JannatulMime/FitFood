@@ -34,7 +34,7 @@ struct HomeView: View {
 extension HomeView {
     var profileNameAndImage: some View {
         HStack {
-            Text("Welcome,\(userName)")
+            Text("Welcome,  \(userName)")
                 .modifier(BoldFont(fontSize: FontSize.Large.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
                 
@@ -101,7 +101,7 @@ extension HomeView {
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-            ScrollView(showsIndicators: false) {
+          //  ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
                     ForEach(0..<5) { type in
                         SingleTodaysRecipe(recipeImage: "Orange", recipeName: "Blueberry Cookies", calories: "240cal", time: "15min")
@@ -109,7 +109,7 @@ extension HomeView {
                     
                     
                 }//.padding()
-            }
+           // }
             
         }
     }

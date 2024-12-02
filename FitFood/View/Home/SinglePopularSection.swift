@@ -45,7 +45,7 @@ struct SinglePopularSection: View {
           .background(RoundedRectangle(cornerRadius: 10).fill(.white)
               //.shadow(color: Color.theme.lightGray, radius: 5, x: -2, y: 3)
               .strokeBorder(Color.theme.lightGray, lineWidth: 0.8)
-              .shadow(color: Color.theme.lightGray, radius: 3, x: 0, y: 2)
+             // .shadow(color: Color.theme.lightGray, radius: 3, x: 0, y: 2)
           )
     }
 }

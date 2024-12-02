@@ -19,30 +19,34 @@ struct DetailsRecipeView: View {
                     .frame(height: 300)
                     .scaledToFill()
                 
-                // Spacer()
                 
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 30) {
                     Spacer()
-                    recipeTitle
-                    typeButton
-                    roundedButton
-                    ingredients
-                    instructions
+                        .frame(height: 0)
+                  
+                    VStack (alignment : .leading){
+                        recipeTitle
+                        typeButton
+                        roundedButton
+                        ingredients
+                        instructions
+                    }
+                    .padding(.horizontal,15)
+                   
                     Spacer()
-                        .frame(height: 50)
+                        .frame(height: 20)
                     
                 }
-                .frame(maxHeight: .infinity)
-                .padding(.all, 15)
+
+             //   .frame(maxHeight: .infinity)
+ 
                 .background(Color.white)
                 .cornerRadius(20)
                 .shadow(color: Color.theme.darkGray, radius: 5, x: 0, y: 3)
                 .offset(y:-70)
-                .padding(.horizontal, 20)
+            
+                .padding()
                 
-                
-                
-                Spacer()
                 
             }
         }
@@ -62,7 +66,6 @@ extension DetailsRecipeView {
             Text("Fruit Dessert")
                 .modifier(BoldFont(fontSize: FontSize.ExtraLarge.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
-                .lineLimit(2)
             
             Spacer()
             
@@ -92,20 +95,20 @@ extension DetailsRecipeView {
     }
     
     var ingredients: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 20) {
             Text ("Ingredients")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
             ForEach(0..<5) { type in
-                HStack {
-                    Image(systemName: "checkmark.seal.fill")
+                HStack(spacing: 15) {
+                    Image(systemName: "checkmark.seal")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundStyle(Color.theme.mediumOrange)
                     
                     Text("200g orange fruit plump")
-                        .modifier(LightFont(fontSize: FontSize.Small.rawValue))
+                        .modifier(RegularFont(fontSize: FontSize.Small.rawValue))
                     
                 }
             }
