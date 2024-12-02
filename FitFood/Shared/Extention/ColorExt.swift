@@ -23,7 +23,7 @@ extension Color {
         let red = Color("Red")
         
         let mediumOrange = Color("MediumOrange")
-//        let blueis = Color("Blueis")
+        let mediumGray = Color("MediumGray")
 //        let greene = Color("Greene")
     }
 }

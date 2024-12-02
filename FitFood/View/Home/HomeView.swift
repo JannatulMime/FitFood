@@ -17,6 +17,7 @@ struct HomeView: View {
             searchBar
             catagories
             poplularSection
+            todaysSection
             
             Spacer()
         }.padding(.horizontal, 30)
@@ -57,7 +58,7 @@ extension HomeView {
     }
     
     var catagories: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             Text("Catagories")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
@@ -75,11 +76,27 @@ extension HomeView {
     
     var poplularSection: some View {
         
-        VStack {
+        VStack(alignment: .leading, spacing: 0) {
             Text("Popular")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 15) {
+                    ForEach(0..<5) { type in
+                        SinglePopularSection(recipeImage: "Applepie", recipeName: "ApplePie", calories: "320cal", time: "20min")
+                    }
+                    
+                }.padding(.vertical)
+            }
+        }
+    }
+    
+    var todaysSection: some View {
+        VStack {
+            Text("Today's recipe")
+                .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
+                .foregroundStyle(Color.theme.darkGray)
             
         }
     }

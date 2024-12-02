@@ -12,7 +12,7 @@ enum FontSize : CGFloat {
     case Large = 24.0
     case Regular = 20.0
     case Small = 15.0
-    case ExtraSmall = 10.0
+    case ExtraSmall = 11.0
 }
 
 struct Fonts {
