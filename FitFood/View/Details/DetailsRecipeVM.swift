@@ -13,7 +13,11 @@ class DetailsRecipeVM: ObservableObject {
     
     init(recipe: Recipe) {
         self.recipe = recipe
-        print("Received rcipe id  : \(recipe.id)")
+       // print("Received rcipe id  : \(recipe.id)")
        
+    }
+    
+    func getIngrediants() -> [String]{
+        return recipe?.ingredients ?? []
     }
 }

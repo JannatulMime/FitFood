@@ -21,7 +21,7 @@ struct DetailsRecipeView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Image("Sandwich")
+                Image(vm.recipe?.image ?? "")
                     .resizable()
                     .frame(maxWidth: .infinity)
                     .frame(height: 300)
@@ -106,17 +106,20 @@ extension DetailsRecipeView {
         VStack(alignment: .leading, spacing: 20) {
             Text ("Ingredients")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
-                .foregroundStyle(Color.theme.darkGray)
+//                .foregroundStyle(Color.theme.darkGray)
+                .foregroundStyle(Color.black)
             
-            ForEach(0..<5) { type in
+            
+            ForEach(vm.getIngrediants(), id: \.self) { singleIngredient in
                 HStack(spacing: 15) {
                     Image(systemName: "checkmark.seal")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundStyle(Color.theme.mediumOrange)
                     
-                    Text("200g orange fruit plump")
+                    Text(singleIngredient)
                         .modifier(RegularFont(fontSize: FontSize.Small.rawValue))
+                        .foregroundStyle(Color.black)
                     
                 }
             }
@@ -137,7 +140,6 @@ extension DetailsRecipeView {
                 .lineLimit(isViewed ? 20 : 3)
             
             Button(isViewed ? "Read Less" : "Read More") {
-               
                     isViewed.toggle()
             }
             .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
