@@ -19,22 +19,26 @@ struct HomeView: View {
 
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 25) {
-                profileNameAndImage
-                searchBar
-                catagories
-                poplularSection
-            
-                todaysSection
-               
-                Spacer()
-            }.padding(.horizontal, 30)
-                .navigationDestination(isPresented: $vm.goToDetailsPage, destination: {
-                    DetailsRecipeView()
-                })
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 25) {
+                    profileNameAndImage
+                    searchBar
+                    catagories
+                    poplularSection
+                    
+                    todaysSection
+                    
+                    Spacer()
+                }.padding(.horizontal, 30)
+                
+            }
+            .navigationDestination(isPresented: $vm.goToDetailsPage, destination: {
+                DetailsRecipeView(recipeId: vm.selectedRecipe)
+            })
         }
     }
+        
 }
 
 #Preview {
@@ -52,7 +56,7 @@ extension HomeView {
             
             Spacer()
             
-            Image("Orange")
+            Image("Berry cake")
                 .resizable()
                 .frame(width: 50, height: 50)
                 .clipShape(.circle)
@@ -123,6 +127,12 @@ extension HomeView {
                 VStack(spacing: 15) {
                     ForEach(recipes) { type in
                         SingleTodaysRecipe(recipe: type)
+                        
+                            .onTapGesture {
+                                vm.goToDetailsPage = true
+                               vm.selectedRecipe = type.id
+                            
+                     }
                     }
                     
                     
