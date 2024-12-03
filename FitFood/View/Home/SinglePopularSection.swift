@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct SinglePopularSection: View {
-    var recipeImage: String
-    var recipeName: String
-    var calories: String
-    var time: String
+    let recipe: Recipe
     
     var body: some View {
         VStack {
             Spacer()
                 .frame(height: 15)
             
-            Image(recipeImage)
+            Image(recipe.image)
                 .resizable()
                 .frame(width: 80, height: 80)
                 .clipShape(.circle)
-                .scaledToFill()
+                .scaledToFit()
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(recipeName)
+                Text(recipe.name)
                     .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
                     .foregroundColor(Color.theme.darkOrange)
                 
-                Text(calories)
+                Text(recipe.calories)
                     .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                     .foregroundColor(Color.theme.darkGray)
                 
@@ -51,7 +48,7 @@ struct SinglePopularSection: View {
 }
 
 #Preview {
-    SinglePopularSection(recipeImage: "Orange", recipeName: "Healthy cookies", calories: "250cal", time: "15min")
+    SinglePopularSection(recipe: dummyRecipe4)
     
 }
 
@@ -80,7 +77,7 @@ extension SinglePopularSection {
                     .frame(width: 12, height: 12)
                     .foregroundStyle(Color.theme.mediumOrange)
                 
-                Text(time)
+                Text(recipe.time)
                     .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                     .foregroundStyle(Color.theme.mediumGray)
                 

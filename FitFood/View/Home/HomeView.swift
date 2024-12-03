@@ -9,7 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     var userName: String
+    let recipes: [Recipe]
+    
     @State var searchText: String = ""
+    @StateObject var vm = HomeVM()
+
+   // var onRecipePressed : (Recipe) -> Void
+  //  @State var isRecipePressed : Bool = false
+
     
     var body: some View {
         ScrollView {
@@ -18,16 +25,20 @@ struct HomeView: View {
                 searchBar
                 catagories
                 poplularSection
+            
                 todaysSection
-                
+               
                 Spacer()
             }.padding(.horizontal, 30)
+                .navigationDestination(isPresented: $vm.goToDetailsPage, destination: {
+                    DetailsRecipeView()
+                })
         }
     }
 }
 
 #Preview {
-    HomeView(userName: "Pappu")
+    HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
 }
 
 
@@ -70,6 +81,7 @@ extension HomeView {
                 HStack(spacing: 15) {
                     ForEach(0..<5) { type in
                         SingleCatagoryButton(catagory: "Breakfast", image: "Orange")
+                        
                     }
                     
                 }
@@ -86,8 +98,15 @@ extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(0..<5) { type in
-                        SinglePopularSection(recipeImage: "Applepie", recipeName: "ApplePie", calories: "320cal", time: "20min")
+                    ForEach(recipes) { type in
+                        SinglePopularSection(recipe: type)
+                        
+                           .onTapGesture {
+                               vm.goToDetailsPage = true
+                              vm.selectedRecipe = type.id
+                           
+                    }
+                      
                     }
                     
                 }
@@ -97,19 +116,18 @@ extension HomeView {
     
     var todaysSection: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text("Today's recipe")
+            Text("Today's Recipe")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-          //  ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
-                    ForEach(0..<5) { type in
-                        SingleTodaysRecipe(recipeImage: "Orange", recipeName: "Blueberry Cookies", calories: "240cal", time: "15min")
+                    ForEach(recipes) { type in
+                        SingleTodaysRecipe(recipe: type)
                     }
                     
                     
-                }//.padding()
-           // }
+               
+            }
             
         }
     }

@@ -21,7 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct FitFoodApp: App {
     var body: some Scene {
         WindowGroup {
-            DetailsRecipeView()
+            HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
         }
     }
 }

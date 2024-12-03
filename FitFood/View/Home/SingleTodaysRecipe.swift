@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct SingleTodaysRecipe: View {
-    var recipeImage: String
-    var recipeName: String
-    var calories: String
-    var time: String
+
+    let recipe: Recipe
 
     var body: some View {
         HStack {
-            Image(recipeImage)
+          //  Image(recipeImage)
+            Image(recipe.image)
                 .resizable()
                 .frame(width: 50, height: 50)
                 .clipShape(.buttonBorder)
-                .scaledToFill()
+                .scaledToFit()
 
             profileNameAndImage
             Spacer()
@@ -37,18 +36,18 @@ struct SingleTodaysRecipe: View {
 }
 
 #Preview {
-    SingleTodaysRecipe(recipeImage: "Orange", recipeName: "Blueberry Cookies", calories: "240cal", time: "15min")
+    SingleTodaysRecipe(recipe: dummyRecipe1)
 }
 
 extension SingleTodaysRecipe {
     var profileNameAndImage: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(recipeName)
+            Text(recipe.name)
                 .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
 
             HStack(spacing: 20) {
-                Text(calories)
+                Text(recipe.calories)
                     .modifier(SemiBoldFont(fontSize: FontSize.ExtraSmall.rawValue))
                     .foregroundStyle(Color.theme.mediumGray)
 
@@ -59,7 +58,7 @@ extension SingleTodaysRecipe {
                         .frame(width: 12, height: 12)
                         .foregroundStyle(Color.theme.mediumOrange)
 
-                    Text(time)
+                    Text(recipe.time)
                         .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                         .foregroundStyle(Color.theme.mediumGray)
                 }
@@ -74,7 +73,7 @@ extension SingleTodaysRecipe {
                 .frame(width: 15, height: 20)
                 .foregroundStyle(Color.theme.mediumOrange)
 
-            Text("Breakfast")
+            Text(recipe.category.rawValue)
                 .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
 
