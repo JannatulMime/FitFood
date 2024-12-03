@@ -21,9 +21,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct FitFoodApp: App {
     var body: some Scene {
         WindowGroup {
-           
-            FetchFirebaseDataTest()
-            //HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
+            NavigationStack{
+                HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
+            }
+
         }
     }
 }

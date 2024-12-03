@@ -9,11 +9,19 @@ import SwiftUI
 
 struct DetailsRecipeView: View {
     @State var isViewed = false
+    @StateObject var vm: DetailsRecipeVM
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    init(recipeId: String) {
+        _vm = StateObject(wrappedValue: DetailsRecipeVM(recipeId: recipeId))
+    }
+
     
     var body: some View {
         ScrollView {
             VStack {
-                Image("Applepie")
+                Image("Sandwich")
                     .resizable()
                     .frame(maxWidth: .infinity)
                     .frame(height: 300)
@@ -57,13 +65,13 @@ struct DetailsRecipeView: View {
 }
 
 #Preview {
-    DetailsRecipeView()
+    DetailsRecipeView(recipeId: "")
 }
 
 extension DetailsRecipeView {
     var recipeTitle: some View {
         HStack {
-            Text("Fruit Dessert")
+            Text(vm.recipe?.name  ?? "No data")
                 .modifier(BoldFont(fontSize: FontSize.ExtraLarge.rawValue))
                 .foregroundStyle(Color.theme.darkOrange)
             
@@ -123,7 +131,7 @@ extension DetailsRecipeView {
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-            Text("Bring the fruit to a simmer and cook for 10 minutes until tender. Remove from the heat and let cool. Blend until smooth. Serve immediately. (This recipe makes about 1.5 cups of pureed fruit. You can also use this pureed fruit to make a fruit salad or ice cream. The pureed fruit can be stored in the refrigerator for up to 3 days.")
+            Text(vm.recipe?.instructions ?? "")
                 .modifier(LightFont(fontSize: FontSize.Small.rawValue))
                 .multilineTextAlignment(.leading)
                 .lineLimit(isViewed ? 20 : 3)
