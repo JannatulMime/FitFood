@@ -9,5 +9,5 @@ import Foundation
 
 class HomeVM: ObservableObject {
     @Published var goToDetailsPage: Bool = false
-    @Published var selectedRecipe: String = ""
+    @Published var selectedRecipe: Recipe?
 }

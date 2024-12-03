@@ -11,8 +11,9 @@ class DetailsRecipeVM: ObservableObject {
     
     @Published var recipe: Recipe?
     
-    init(recipeId: String) {
-        print("Received rcipe id  : \(recipeId)")
+    init(recipe: Recipe) {
+        self.recipe = recipe
+        print("Received rcipe id  : \(recipe.id)")
        
     }
 }

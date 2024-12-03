@@ -13,8 +13,8 @@ struct DetailsRecipeView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    init(recipeId: String) {
-        _vm = StateObject(wrappedValue: DetailsRecipeVM(recipeId: recipeId))
+    init(recipe: Recipe) {
+        _vm = StateObject(wrappedValue: DetailsRecipeVM(recipe: recipe))
     }
 
     
@@ -65,7 +65,7 @@ struct DetailsRecipeView: View {
 }
 
 #Preview {
-    DetailsRecipeView(recipeId: "")
+    DetailsRecipeView(recipe: dummyRecipe1)
 }
 
 extension DetailsRecipeView {

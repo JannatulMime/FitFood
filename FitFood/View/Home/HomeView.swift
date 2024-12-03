@@ -34,7 +34,10 @@ struct HomeView: View {
                 
             }
             .navigationDestination(isPresented: $vm.goToDetailsPage, destination: {
-                DetailsRecipeView(recipeId: vm.selectedRecipe)
+                if let selectedRecipe = vm.selectedRecipe {
+                    DetailsRecipeView(recipe: selectedRecipe)
+                }
+               
             })
         }
     }
@@ -102,12 +105,12 @@ extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(recipes) { type in
-                        SinglePopularSection(recipe: type)
+                    ForEach(recipes) { recipe in
+                        SinglePopularSection(recipe: recipe)
                         
                            .onTapGesture {
                                vm.goToDetailsPage = true
-                              vm.selectedRecipe = type.id
+                              vm.selectedRecipe = recipe
                            
                     }
                       
@@ -125,12 +128,12 @@ extension HomeView {
                 .foregroundStyle(Color.theme.darkGray)
             
                 VStack(spacing: 15) {
-                    ForEach(recipes) { type in
-                        SingleTodaysRecipe(recipe: type)
+                    ForEach(recipes) { recipe in
+                        SingleTodaysRecipe(recipe: recipe)
                         
                             .onTapGesture {
                                 vm.goToDetailsPage = true
-                               vm.selectedRecipe = type.id
+                                vm.selectedRecipe = recipe
                             
                      }
                     }
