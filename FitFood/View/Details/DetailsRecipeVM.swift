@@ -10,6 +10,7 @@ import Foundation
 class DetailsRecipeVM: ObservableObject {
     
     @Published var recipe: Recipe?
+   
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -20,4 +21,9 @@ class DetailsRecipeVM: ObservableObject {
     func getIngrediants() -> [String]{
         return recipe?.ingredients ?? []
     }
+    
+    func getTags() -> [Tag]{
+        return recipe?.tags ?? []
+    }
+    
 }

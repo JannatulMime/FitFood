@@ -28,32 +28,32 @@ struct DetailsRecipeView: View {
                     .scaledToFill()
                 
                 
-                VStack(alignment: .leading, spacing: 30) {
-                    Spacer()
-                        .frame(height: 0)
+                VStack {
                   
-                    VStack (alignment : .leading){
+                    VStack (alignment : .leading, spacing: 30){
+                        Spacer()
+                            .frame(height: 0)
+                        
                         recipeTitle
                         typeButton
                         roundedButton
                         ingredients
                         instructions
                     }
-                    .padding(.horizontal,15)
+                    .padding(.horizontal, 15)
                    
                     Spacer()
                         .frame(height: 20)
                     
                 }
 
-             //   .frame(maxHeight: .infinity)
- 
+              // .frame(maxHeight: .infinity)
                 .background(Color.white)
                 .cornerRadius(20)
                 .shadow(color: Color.theme.darkGray, radius: 5, x: 0, y: 3)
                 .offset(y:-70)
-            
-                .padding()
+                .padding(.all, 20)
+               
                 
                 
             }
@@ -87,18 +87,19 @@ extension DetailsRecipeView {
     var typeButton: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
-                ForEach(0..<5) { type in
-                    TextInCapsule(text: "Dinner")
+                ForEach(vm.getTags()) { tag in
+                    TextInCapsule(text: tag.title)
                 }
             }
         }
     }
     
     var roundedButton: some View {
-        HStack(spacing: 25){
-            ForEach(0..<3) { type in
-                SingleRoundedButton(text: "Time", textOutput: "30min")
-            }
+
+        HStack(spacing: 25) {
+            SingleRoundedButton(text: "Calories", textOutput: vm.recipe?.calories ?? "No data")
+            SingleRoundedButton(text: "Time", textOutput: vm.recipe?.time ?? "No data")
+            SingleRoundedButton(text: "Rating", textOutput: vm.recipe?.getFormatedRating() ?? "")
         }
     }
     
