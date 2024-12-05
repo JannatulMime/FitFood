@@ -68,11 +68,20 @@ extension SingleTodaysRecipe {
 
     var bookmarkAndCatagory: some View {
         VStack(alignment: .trailing) {
-            Image(systemName: "bookmark.fill")
-                .resizable()
-                .frame(width: 15, height: 20)
-                .foregroundStyle(Color.theme.mediumOrange)
-
+            ZStack {
+                Circle()
+                    .fill(Color.white)
+                    .shadow(color: Color.theme.lightGray, radius: 2, x: 0, y: 1)
+                
+                Image(systemName: "heart")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                   
+                   .foregroundStyle(Color.theme.mediumOrange)
+                
+            }.frame(width: 40, height: 40)
+                
+                
             Text(recipe.category.rawValue)
                 .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                 .foregroundStyle(Color.theme.darkGray)

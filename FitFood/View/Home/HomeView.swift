@@ -26,19 +26,24 @@ struct HomeView: View {
                     searchBar
                     catagories
                     poplularSection
-                    
                     todaysSection
                     
                     Spacer()
                 }.padding(.horizontal, 30)
                 
             }
+           
             .navigationDestination(isPresented: $vm.goToDetailsPage, destination: {
                 if let selectedRecipe = vm.selectedRecipe {
                     DetailsRecipeView(recipe: selectedRecipe)
                 }
                
             })
+            
+            .navigationDestination(isPresented: $vm.goToProfileView, destination: {
+                ProfileView()
+            })
+            
         }
     }
         
@@ -59,23 +64,30 @@ extension HomeView {
             
             Spacer()
             
-            Image("Berry cake")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(.circle)
-                .scaledToFit()
+            VStack {
+                Image("Berry cake")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(.circle)
+                    .scaledToFit()
+            }.onTapGesture {
+                vm.goToProfileView = true
+            }
             
         }
     }
     
     var searchBar: some View {
         HStack {
+            Image (systemName: "magnifyingglass")
+                .foregroundColor(Color.theme.mediumGray)
+            
             TextField("Search", text: $searchText)
-                .padding()
-                .background(Color.theme.lightGray.opacity(0.3))
-                .cornerRadius(10)
-              
-        }
+                
+        }.padding()
+            .background(Color.theme.lightGray.opacity(0.3))
+            .cornerRadius(10)
+          
     }
     
     var catagories: some View {

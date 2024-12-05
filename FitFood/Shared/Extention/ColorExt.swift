@@ -24,6 +24,7 @@ extension Color {
         
         let mediumOrange = Color("MediumOrange")
         let mediumGray = Color("MediumGray")
-//        let greene = Color("Greene")
+        let merun = Color("Merun")
+        let orangie = Color("Orangie")
     }
 }

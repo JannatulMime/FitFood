@@ -10,4 +10,5 @@ import Foundation
 class HomeVM: ObservableObject {
     @Published var goToDetailsPage: Bool = false
     @Published var selectedRecipe: Recipe?
+    @Published var goToProfileView: Bool = false
 }

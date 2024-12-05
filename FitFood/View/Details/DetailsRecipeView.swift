@@ -13,23 +13,53 @@ struct DetailsRecipeView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    let topBarConfig = CommonTopBarData(title: "", bgColor: Color.clear, leftIconName: "chevron.left", rightIconName: "")
+    
     init(recipe: Recipe) {
         _vm = StateObject(wrappedValue: DetailsRecipeVM(recipe: recipe))
     }
 
     
+    
     var body: some View {
+        NavigationStack {
+           
+            contentView
+                
+            
+        }
+    }
+}
+
+#Preview {
+    DetailsRecipeView(recipe: dummyRecipe1)
+}
+
+extension DetailsRecipeView {
+    
+    var contentView: some View {
         ScrollView {
             VStack {
-                Image(vm.recipe?.image ?? "")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 300)
-                    .scaledToFill()
-                
+                HStack {
+                    Image(vm.recipe?.image ?? "")
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300)
+                        .scaledToFill()
+                    
+                }.overlay(
+                    
+                    CommonTopBarView(data: topBarConfig, onLeftButtonClicked:   {
+                       
+                        self.presentationMode.wrappedValue.dismiss()
+                            
+                    }
+                    ).offset(y: -50)
+                        .padding(.leading)
+                       
+                )
                 
                 VStack {
-                  
                     VStack (alignment : .leading, spacing: 30){
                         Spacer()
                             .frame(height: 0)
@@ -57,18 +87,16 @@ struct DetailsRecipeView: View {
                 
                 
             }
+           
+            
+           
         }
+        .navigationBarBackButtonHidden(true)
         .ignoresSafeArea()
         
-        
     }
-}
-
-#Preview {
-    DetailsRecipeView(recipe: dummyRecipe1)
-}
-
-extension DetailsRecipeView {
+    
+   
     var recipeTitle: some View {
         HStack {
             Text(vm.recipe?.name  ?? "No data")
@@ -77,10 +105,20 @@ extension DetailsRecipeView {
             
             Spacer()
             
-            Image(systemName: SystemImage.heart_fill )
-                .resizable()
-                .frame(width: 23, height: 20)
-                .foregroundStyle(Color.theme.red)
+            ZStack {
+                Circle()
+                    .fill(Color.white)
+                    .shadow(color: Color.theme.lightGray, radius: 2, x: 0, y: 1)
+                
+                Image(systemName: "heart")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                   
+                   .foregroundStyle(Color.theme.mediumOrange)
+                
+            }.frame(width: 40, height: 40)
+                
+                
         }
     }
     
@@ -144,7 +182,7 @@ extension DetailsRecipeView {
                     isViewed.toggle()
             }
             .modifier(SemiBoldFont(fontSize: FontSize.Small.rawValue))
-            .foregroundStyle(Color.theme.red)
+            .foregroundStyle(Color.theme.merun)
         }
     }
 }
