@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "6FCB2029-3005-492B-ABB7-1F5DB436B922",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:FitFood.xcodeproj",
+        "identifier" : "7B013E762CFF3612009BBA3D",
+        "name" : "FirebaseIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
