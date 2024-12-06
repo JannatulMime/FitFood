@@ -23,6 +23,8 @@
 		7BD6B94C2CFB3BB100C808D7 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD6B94B2CFB3BB100C808D7 /* FirebaseFirestoreCombine-Community */; };
 		7BD6B94E2CFB3BB100C808D7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD6B94D2CFB3BB100C808D7 /* FirebaseStorage */; };
 		7BD6B9502CFB3BB100C808D7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD6B94F2CFB3BB100C808D7 /* FirebaseStorageCombine-Community */; };
+		F3D340272D02D99000BB6438 /* FitFoodFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D340262D02D99000BB6438 /* FitFoodFirebase.framework */; };
+		F3D340282D02D99000BB6438 /* FitFoodFirebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3D340262D02D99000BB6438 /* FitFoodFirebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F3DBCE542CF746AE0033DA7D;
 			remoteInfo = FitFood;
+		};
+		F3D340252D02D99000BB6438 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3D33FA72D02D91300BB6438 /* FitFoodFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3D33E352D02D51D00BB6438;
+			remoteInfo = FitFoodFirebase;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -46,11 +55,23 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3D340292D02D99000BB6438 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3D340282D02D99000BB6438 /* FitFoodFirebase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B013E482CFF2D7B009BBA3D /* FitBookMacOs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitBookMacOs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD6B9552CFB3C9500C808D7 /* FitFoodAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitFoodAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3D33FA72D02D91300BB6438 /* FitFoodFirebase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FitFoodFirebase.xcodeproj; path = CustomFrameworks/FitFoodFirebase/FitFoodFirebase.xcodeproj; sourceTree = "<group>"; };
 		F3DBCE552CF746AE0033DA7D /* FitFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +118,7 @@
 				7B013E642CFF2F72009BBA3D /* FirebaseFirestoreCombine-Community in Frameworks */,
 				7B013E662CFF2F72009BBA3D /* FirebaseStorage in Frameworks */,
 				7B013E622CFF2F72009BBA3D /* FirebaseFirestore in Frameworks */,
+				F3D340272D02D99000BB6438 /* FitFoodFirebase.framework in Frameworks */,
 				7B013E5B2CFF2F22009BBA3D /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,8 +151,17 @@
 		7B013E5C2CFF2F72009BBA3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3D33FA72D02D91300BB6438 /* FitFoodFirebase.xcodeproj */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3D33FA82D02D91300BB6438 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3D340262D02D99000BB6438 /* FitFoodFirebase.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F3DBCE4C2CF746AE0033DA7D = {
@@ -164,6 +195,7 @@
 				7B013E442CFF2D7B009BBA3D /* Sources */,
 				7B013E452CFF2D7B009BBA3D /* Frameworks */,
 				7B013E462CFF2D7B009BBA3D /* Resources */,
+				F3D340292D02D99000BB6438 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,6 +310,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F3DBCE562CF746AE0033DA7D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F3D33FA82D02D91300BB6438 /* Products */;
+					ProjectRef = F3D33FA72D02D91300BB6438 /* FitFoodFirebase.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F3DBCE542CF746AE0033DA7D /* FitFood */,
@@ -286,6 +324,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F3D340262D02D99000BB6438 /* FitFoodFirebase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FitFoodFirebase.framework;
+			remoteRef = F3D340252D02D99000BB6438 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7B013E462CFF2D7B009BBA3D /* Resources */ = {
