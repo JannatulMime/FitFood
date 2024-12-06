@@ -1,9 +1,10 @@
 //
 //  FetchRecipeDataManager.swift
-//  FirebaseIntegration
+//  FitFoodFirebase
 //
-//  Created by Habibur Rahman on 3/12/24.
+//  Created by Habibur Rahman on 6/12/24.
 //
+
 
 import FirebaseCore
 //import FirebaseFirestore
@@ -34,12 +35,12 @@ public class FetchRecipeDataManager {
 //            do{
 //                self.datas = try snapshot?.decoded() ?? []
 //                print("datas count \(self.datas.count)")
-//                
+//
 //                for data in self.datas{
 //                    print("data", data)
 //                }
 //            }catch{
-//                
+//
 //            }
 //        }
     }
