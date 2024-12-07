@@ -16,6 +16,10 @@
 		F32271FF2D03470B005D51C8 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F32271FE2D03470B005D51C8 /* FirebaseFirestoreCombine-Community */; };
 		F32272012D03470B005D51C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F32272002D03470B005D51C8 /* FirebaseStorage */; };
 		F32272032D03470B005D51C8 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F32272022D03470B005D51C8 /* FirebaseStorageCombine-Community */; };
+		F3BA88742D04A120001B624F /* FitFoodCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BA88732D04A120001B624F /* FitFoodCore.framework */; };
+		F3BA88752D04A120001B624F /* FitFoodCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3BA88732D04A120001B624F /* FitFoodCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F3BA88772D04A142001B624F /* FitFoodCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BA88762D04A142001B624F /* FitFoodCore.framework */; };
+		F3BA88782D04A142001B624F /* FitFoodCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3BA88762D04A142001B624F /* FitFoodCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +32,36 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F3BA886B2D049CF4001B624F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3BA88752D04A120001B624F /* FitFoodCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3BA88792D04A142001B624F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3BA88782D04A142001B624F /* FitFoodCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F32271DA2D034697005D51C8 /* FirebaseHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32271E22D034697005D51C8 /* FirebaseHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirebaseHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3BA88732D04A120001B624F /* FitFoodCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FitFoodCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3BA88762D04A142001B624F /* FitFoodCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FitFoodCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -66,6 +97,7 @@
 			files = (
 				F32271F52D03470B005D51C8 /* FirebaseAuth in Frameworks */,
 				F32271F92D03470B005D51C8 /* FirebaseCore in Frameworks */,
+				F3BA88742D04A120001B624F /* FitFoodCore.framework in Frameworks */,
 				F32272032D03470B005D51C8 /* FirebaseStorageCombine-Community in Frameworks */,
 				F32271FB2D03470B005D51C8 /* FirebaseDatabase in Frameworks */,
 				F32271FF2D03470B005D51C8 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -80,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32271E32D034697005D51C8 /* FirebaseHelper.framework in Frameworks */,
+				F3BA88772D04A142001B624F /* FitFoodCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +124,7 @@
 			children = (
 				F32271DC2D034697005D51C8 /* FirebaseHelper */,
 				F32271E62D034697005D51C8 /* FirebaseHelperTests */,
+				F3BA88672D049CF4001B624F /* Frameworks */,
 				F32271DB2D034697005D51C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +136,15 @@
 				F32271E22D034697005D51C8 /* FirebaseHelperTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3BA88672D049CF4001B624F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3BA88762D04A142001B624F /* FitFoodCore.framework */,
+				F3BA88732D04A120001B624F /* FitFoodCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +168,7 @@
 				F32271D62D034697005D51C8 /* Sources */,
 				F32271D72D034697005D51C8 /* Frameworks */,
 				F32271D82D034697005D51C8 /* Resources */,
+				F3BA886B2D049CF4001B624F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +199,7 @@
 				F32271DE2D034697005D51C8 /* Sources */,
 				F32271DF2D034697005D51C8 /* Frameworks */,
 				F32271E02D034697005D51C8 /* Resources */,
+				F3BA88792D04A142001B624F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

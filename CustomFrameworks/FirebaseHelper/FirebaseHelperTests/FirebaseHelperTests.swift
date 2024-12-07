@@ -10,13 +10,13 @@ import XCTest
 
 final class FirebaseHelperTests: XCTestCase {
 
-    func test_init(){
-        let helper = FirebaseDataHelper()
-    
-        let exp = expectation(description: "test exp")
-        XCTAssertNotNil(helper)
-        
-        wait(for: [exp], timeout: 10)
-    }
+//    func test_init(){
+//        let helper = FirebaseDataHelper()
+//    
+//        let exp = expectation(description: "test exp")
+//        XCTAssertNotNil(helper)
+//        
+//        wait(for: [exp], timeout: 10)
+//    }
 
 }

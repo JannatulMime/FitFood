@@ -102,6 +102,13 @@
 			);
 			target = F3DBCE542CF746AE0033DA7D /* FitFood */;
 		};
+		F3BA88612D0471A1001B624F /* Exceptions for "FitFoodCore" folder in "FitFoodAuthTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/Recipe.swift,
+			);
+			target = 7BD6B9542CFB3C9500C808D7 /* FitFoodAuthTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -119,6 +126,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F31A549E2D04070D00B1A595 /* Exceptions for "FitFoodCore" folder in "FitFood" target */,
+				F3BA88612D0471A1001B624F /* Exceptions for "FitFoodCore" folder in "FitFoodAuthTests" target */,
 				F31A54A02D04082100B1A595 /* Exceptions for "FitFoodCore" folder in "FitBookMacOs" target */,
 				F31A54992D04061700B1A595 /* Exceptions for "FitFoodCore" folder in "FitFoodCore" target */,
 			);

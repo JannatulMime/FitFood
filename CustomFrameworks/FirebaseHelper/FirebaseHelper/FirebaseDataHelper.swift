@@ -10,17 +10,16 @@ import FirebaseFirestore
 import Foundation
 
 
-
-class FirebaseHelper {
-    struct Recipe: Codable {
-        let id: String?
-        let ingredients: String?
-    }
-
-    struct RecipeListResponse: Codable {
-        let list: [Recipe]
-    }
-}
+//class FirebaseHelper {
+//    struct Recipe: Codable {
+//        let id: String?
+//        let ingredients: String?
+//    }
+//
+//    struct RecipeListResponse: Codable {
+//        let list: [Recipe]
+//    }
+//}
 
 extension QueryDocumentSnapshot {
     func decoded<Type: Decodable>() throws -> Type {
@@ -38,21 +37,22 @@ extension QuerySnapshot {
 }
 
 public class FirebaseDataHelper {
-    var datas = [FirebaseHelper.Recipe]()
+    
+   // var datas = [FirebaseHelper.Recipe]()
     public init() {
         FirebaseApp.configure()
-        Firestore.firestore().collection("Recipes").getDocuments { snapshot, _ in
-            do{
-                self.datas = try snapshot?.decoded() ?? []
-                print("datas count \(self.datas.count)")
-                
-                for data in self.datas{
-                    print("data", data)
-                }
-            }catch{
-                
-            }
-        }
+//        Firestore.firestore().collection("Recipes").getDocuments { snapshot, _ in
+//            do{
+//                self.datas = try snapshot?.decoded() ?? []
+//                print("datas count \(self.datas.count)")
+//                
+//                for data in self.datas{
+//                    print("data", data)
+//                }
+//            }catch{
+//                
+//            }
+//        }
     }
 
 //    func fetchAllRecipe() {
