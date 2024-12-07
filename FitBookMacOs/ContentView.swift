@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var vm = CreateRecipeVM()
+   // @StateObject var vm = //CreateRecipeVM()
     var body: some View {
         VStack {
             Image(systemName: "globe")
