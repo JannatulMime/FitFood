@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseHelper
-
+import FitFoodCore
 
 class FirebaseAuthManager {
     
