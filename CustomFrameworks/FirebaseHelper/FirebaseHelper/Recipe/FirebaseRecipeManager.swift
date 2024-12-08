@@ -10,8 +10,8 @@ import FitFoodCore
 import Foundation
 
 public class FirebaseRecipeManager {
-    
-    public typealias Result = (String?, Error?)
+    public typealias CreateResult = (String?, Error?)
+    public typealias FetchListResult = ([Recipe]?, Error?)
 
     let firestore = Firestore.firestore()
     let collectionRef: CollectionReference
@@ -20,7 +20,7 @@ public class FirebaseRecipeManager {
         collectionRef = firestore.collection(root).document("Recipes").collection("list")
     }
 
-    public func addData(recipe: Recipe) async -> Result {
+    public func addData(recipe: Recipe) async -> CreateResult {
         do {
             let data = recipe.toDictionary()
             let ref = try await collectionRef.addDocument(data: data)
@@ -32,19 +32,46 @@ public class FirebaseRecipeManager {
         }
     }
 
-    public func fetchDataList() {
-        var datas = [RecipeCodable]()
-        collectionRef.getDocuments { snapshot, _ in
-            do {
-                datas = try snapshot?.decoded() ?? []
-                print("datas count \(datas.count)")
+    public func fetchDataList() async -> FetchListResult {
+        do {
+            let snapshot = try await collectionRef.getDocuments()
+            let codableRecipeList: [RecipeCodable] = try snapshot.decoded()
+            let recipeList: [Recipe] = codableRecipeList.map { $0.toRecipe() }
 
-                for data in datas {
-                    print("data", data)
-                }
-            } catch {
+            print("datas count \(codableRecipeList.count)")
+
+            for data in recipeList {
+                print("data", data)
             }
+
+            return (recipeList, nil)
+        } catch {
+            print("e \(error.localizedDescription)")
+            return (nil, error)
         }
+
+//        collectionRef.getDocuments { snapshot, _ in
+//            do {
+//                let codableRecipeList :  [RecipeCodable] = try snapshot?.decoded() ?? []
+//                let recipeList : [Recipe] = codableRecipeList.map{$0.toRecipe()}
+//               // print("datas count \(datas.count)")
+//
+//                return (recipeList, nil)
+        ////                for data in datas {
+        ////                    print("data", data)
+        ////                }
+//            } catch {
+//                return (nil, error)
+//            }
+//        }
+    }
+}
+
+extension RecipeCodable {
+    func toRecipe() -> Recipe {
+        // let recipeCategory : Category = Category(rawValue: category)
+
+        Recipe(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: .breakfast, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTag() })
     }
 }
 

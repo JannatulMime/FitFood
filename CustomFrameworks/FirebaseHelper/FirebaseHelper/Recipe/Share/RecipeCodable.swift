@@ -34,13 +34,7 @@ public struct RecipeCodable: Codable, Identifiable {
     }
 }
 
-extension RecipeCodable {
-    func toRecipe() -> Recipe {
-       // let recipeCategory : Category = Category(rawValue: category)
-      
-        Recipe(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: .breakfast, rating: rating, time: time, calories: calories, tags: tags.map{$0.toTag()})
-    }
-}
+
 
 public struct TagCodable : Codable {
     public let id : String

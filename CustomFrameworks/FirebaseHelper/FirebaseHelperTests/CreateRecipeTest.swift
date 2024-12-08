@@ -36,6 +36,19 @@ class CreateRecipeTest: XCTestCase {
         wait(for: [exp], timeout: 10)
     }
     
+    func test_fetch_CreateSuccess() {
+        let data = dummyRecipe1
+        let manager = makeSUT()
+        let exp = expectation(description: "Fetch recipe")
+
+        Task {
+            let (recipeList,error) = await manager.fetchDataList()
+            exp.fulfill()
+            XCTAssertNotNil(recipeList)
+        }
+        wait(for: [exp], timeout: 10)
+    }
+    
     //Helpers :
     func makeSUT() -> FirebaseRecipeManager{
         FirebaseApp.configure()
