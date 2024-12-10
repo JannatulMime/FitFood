@@ -18,6 +18,18 @@ public enum Category: String {
     case unknown = ""
 }
 
+public struct RecipeCategory {
+    public let id : String
+    public let title : String
+    public let imageUrl : String
+    
+    public init(id: String, title: String, imageUrl: String) {
+        self.id = id
+        self.title = title
+        self.imageUrl = imageUrl
+    }
+}
+
 public struct RecipeTag : Identifiable {
     public let id : String
     public let title : String
@@ -28,8 +40,8 @@ public struct RecipeTag : Identifiable {
     }
 }
 
-public struct Recipe: Identifiable {
-    public let id: String
+public class Recipe: Identifiable {
+    public var id: String
     public let name: String
     public let ingredients: [String]
     public let instructions: String
@@ -117,3 +129,6 @@ let dummyRecipe6 = Recipe(id: UUID().uuidString,name: "Blueberry cake", ingredie
 
 
 
+let catBreakfast = RecipeCategory(id: "1", title: "Breakfast", imageUrl: "")
+let catLunch = RecipeCategory(id: "2", title: "Lunch", imageUrl: "")
+let catDinner = RecipeCategory(id: "3", title: "Dinner", imageUrl: "")

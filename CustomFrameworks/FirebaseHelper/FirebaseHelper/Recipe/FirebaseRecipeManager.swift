@@ -22,10 +22,18 @@ public class FirebaseRecipeManager {
 
     public func addData(recipe: Recipe) async -> CreateResult {
         do {
+            let id = collectionRef.document().documentID
+          
+            recipe.id = id
             let data = recipe.toDictionary()
-            let ref = try await collectionRef.addDocument(data: data)
+           // collectionRef.collectionID
+          //  let documentRef = collectionRef.document()
+            
+            
+            let _ = try await collectionRef.document(id).setData(data)//documentRef.addDocument(data: data)
             //  print("Success creating recipe")
-            return (ref.documentID, nil)
+//            return (ref.documentID, nil)
+            return (id, nil)
         } catch {
             // print("in catch")
             return (nil, error)
