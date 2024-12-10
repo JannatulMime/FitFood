@@ -37,9 +37,8 @@ public class FirebaseRecipeCategoryManager {
     public func addSingleData(category: RecipeCategory) async -> CreateResult {
         do {
             let data = category.toDictionary()
-            let ref = try await collectionRef.addDocument(data: data)
-            //  print("Success creating recipe")
-            return (ref.documentID, nil)
+            _ = try await collectionRef.document(category.id).setData(data)
+            return (category.id, nil)
         } catch {
             // print("in catch")
             return (nil, error)

@@ -19,7 +19,7 @@ public enum Category: String {
 }
 
 public struct RecipeCategory {
-    public let id : String
+    public var id : String
     public let title : String
     public let imageUrl : String
     
@@ -40,7 +40,7 @@ public struct RecipeTag : Identifiable {
     }
 }
 
-public class Recipe: Identifiable {
+public struct Recipe: Identifiable {
     public var id: String
     public let name: String
     public let ingredients: [String]
@@ -129,6 +129,6 @@ let dummyRecipe6 = Recipe(id: UUID().uuidString,name: "Blueberry cake", ingredie
 
 
 
-let catBreakfast = RecipeCategory(id: "1", title: "Breakfast", imageUrl: "")
-let catLunch = RecipeCategory(id: "2", title: "Lunch", imageUrl: "")
-let catDinner = RecipeCategory(id: "3", title: "Dinner", imageUrl: "")
+public let catBreakfast = RecipeCategory(id: "1", title: "Breakfast", imageUrl: "")
+public let catLunch = RecipeCategory(id: "2", title: "Lunch", imageUrl: "")
+public let catDinner = RecipeCategory(id: "3", title: "Dinner", imageUrl: "")
