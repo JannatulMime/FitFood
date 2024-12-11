@@ -9,8 +9,8 @@ import Foundation
 import FirebaseHelper
 import FitFoodCore
 
-class FirebaseAuthManager {
-    
+//class FirebaseAuthManager {
+//    
 //    func createUser(withEmail email: String, password: String, fullName: String) async throws {
 //        
 //        do {
@@ -33,5 +33,5 @@ class FirebaseAuthManager {
 //            print("U>> Failed to Login E -- \(error.localizedDescription)")
 //        }
 //    }
-
-}
+//
+//}
