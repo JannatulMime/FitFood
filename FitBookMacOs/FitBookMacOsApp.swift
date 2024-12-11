@@ -11,7 +11,7 @@ import SwiftUI
 struct FitBookMacOsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CreateRecipeView()
         }
     }
 }

@@ -13,6 +13,8 @@
 		F31A54872D04046900B1A595 /* FirebaseHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F31A54942D04061700B1A595 /* FitFoodCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; };
 		F31A54952D04061700B1A595 /* FitFoodCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F3A5A56C2D09254C00E66162 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A5A56B2D09254C00E66162 /* RichTextKit */; };
+		F3A5A56E2D0925B400E66162 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A5A56D2D0925B400E66162 /* RichTextKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A5A56E2D0925B400E66162 /* RichTextKit in Frameworks */,
 				F31A54862D04046900B1A595 /* FirebaseHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +175,7 @@
 			files = (
 				F31A54842D04038400B1A595 /* FirebaseHelper.framework in Frameworks */,
 				F31A54942D04061700B1A595 /* FitFoodCore.framework in Frameworks */,
+				F3A5A56C2D09254C00E66162 /* RichTextKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +252,7 @@
 			);
 			name = FitBookMacOs;
 			packageProductDependencies = (
+				F3A5A56D2D0925B400E66162 /* RichTextKit */,
 			);
 			productName = FitBookMacOs;
 			productReference = 7B013E482CFF2D7B009BBA3D /* FitBookMacOs.app */;
@@ -318,6 +323,7 @@
 			);
 			name = FitFood;
 			packageProductDependencies = (
+				F3A5A56B2D09254C00E66162 /* RichTextKit */,
 			);
 			productName = FitFood;
 			productReference = F3DBCE552CF746AE0033DA7D /* FitFood.app */;
@@ -358,6 +364,7 @@
 			mainGroup = F3DBCE4C2CF746AE0033DA7D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F3DBCE562CF746AE0033DA7D /* Products */;
@@ -874,6 +881,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/RichTextKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3A5A56B2D09254C00E66162 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+		F3A5A56D2D0925B400E66162 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F3DBCE4D2CF746AE0033DA7D /* Project object */;
 }
