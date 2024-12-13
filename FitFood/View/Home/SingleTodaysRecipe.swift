@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import FitFoodCore
 
 struct SingleTodaysRecipe: View {
 
     let recipe: Recipe
+    @State var isFavorite: Bool = false
+    
 
     var body: some View {
         HStack {
@@ -73,13 +76,16 @@ extension SingleTodaysRecipe {
                     .fill(Color.white)
                     .shadow(color: Color.theme.lightGray, radius: 2, x: 0, y: 1)
                 
-                Image(systemName: "heart")
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .resizable()
                     .frame(width: 20, height: 20)
                    
                    .foregroundStyle(Color.theme.mediumOrange)
                 
             }.frame(width: 40, height: 40)
+                .onTapGesture {
+                    isFavorite.toggle()
+                }
                 
                 
             Text(recipe.category.rawValue)

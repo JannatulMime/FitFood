@@ -68,11 +68,11 @@ public struct Recipe: Identifiable {
 }
 
 extension Recipe {
-    func getFormatedRating() -> String {
+    public func getFormatedRating() -> String {
         String(rating) + " / 5"
     }
     
-    func getCategoryText() -> String {
+    public func getCategoryText() -> String {
         return category.rawValue
     }
 }
@@ -118,14 +118,14 @@ public let dummyRecipe1 = Recipe(id: UUID().uuidString, name: "Egg Pudding", ing
 
 public let dummyRecipe2 = Recipe(id: UUID().uuidString,name: "Chocolate Cake", ingredients: ["2 cup milk", "2 cup sugar", "2 cup flour", "backing powder", "eggs", "chocolate chips", "baking soda", "salt"], instructions: "2 cup of baking soda and salt are used to make the cake. 2 cup of flour and backing powder, backing powder and salt are used to make the cake. 2 cup of sugar and milk are used to make the cake. 2 cup of eggs are used to make the cake. 2 cup of chocolate chips are used to make the cake on strove or the oven. Around 40 mins bake it and cake is reday to eat.", image: "Cake", category: Category.dessert, rating: 4.2, time: "40min", calories: "2500cal", tags: dummyTags1)
 
-let dummyRecipe3 = Recipe(id: UUID().uuidString,name: "Rice Bowl", ingredients: ["Boiled rice", "Chicken", "Vegetables", "Sauce", "Onion", "Garlic","salt","pepper"], instructions: "Take a pan and add some oil. Then add some onion and garlic. Then add some salt and pepper. Then add some chicken. Then add some vegetables. Then add some sauce. Then add some boiled rice. Then mix well. Then serve it into a bowl. Enjoy..", image: "Rice", category: Category.lunch, rating: 3.7, time: "15min", calories: "1150cal",  tags: dummyTags3)
+public let dummyRecipe3 = Recipe(id: UUID().uuidString,name: "Rice Bowl", ingredients: ["Boiled rice", "Chicken", "Vegetables", "Sauce", "Onion", "Garlic","salt","pepper"], instructions: "Take a pan and add some oil. Then add some onion and garlic. Then add some salt and pepper. Then add some chicken. Then add some vegetables. Then add some sauce. Then add some boiled rice. Then mix well. Then serve it into a bowl. Enjoy..", image: "Rice", category: Category.lunch, rating: 3.7, time: "15min", calories: "1150cal",  tags: dummyTags3)
 
-let dummyRecipe4 = Recipe(id: UUID().uuidString,name: "Chicken Fry", ingredients: ["Chicken", "Oil", "Spaices"], instructions: "First of all cut the chicken into small pieces. Then add some oil. Then add some spices and salt. Then fry it until the chicken is completely trun into brown. Then serve it on Plate and here is it go Enjoy..", image: "Chicken", category: Category.snacks, rating: 4.8, time: "50min", calories: "1500cal",  tags: dummyTags2)
+public let dummyRecipe4 = Recipe(id: UUID().uuidString,name: "Chicken Fry", ingredients: ["Chicken", "Oil", "Spaices"], instructions: "First of all cut the chicken into small pieces. Then add some oil. Then add some spices and salt. Then fry it until the chicken is completely trun into brown. Then serve it on Plate and here is it go Enjoy..", image: "Chicken", category: Category.snacks, rating: 4.8, time: "50min", calories: "1500cal",  tags: dummyTags2)
 
-let dummyRecipe5 = Recipe(id: UUID().uuidString,name: "Sandwich", ingredients: ["Slice of 4 bread", "Onion", "Latuce Leaf", "Tommato", "Chicken", "Sauce"], instructions: "Take a slice of bread and add split of sauces on bread. Add some round slice onion. Then add some latuce leaf. Then add round slice tomato. And top of lots of boiled or fried chicken. Then add some salt and pepper. Then another piece of bread put on it and serve. Enjoy..", image: "Sandwich", category: Category.breakfast, rating: 4.9, time: "10min", calories: "690cal", tags: dummyTags2)
+public let dummyRecipe5 = Recipe(id: UUID().uuidString,name: "Sandwich", ingredients: ["Slice of 4 bread", "Onion", "Latuce Leaf", "Tommato", "Chicken", "Sauce"], instructions: "Take a slice of bread and add split of sauces on bread. Add some round slice onion. Then add some latuce leaf. Then add round slice tomato. And top of lots of boiled or fried chicken. Then add some salt and pepper. Then another piece of bread put on it and serve. Enjoy..", image: "Sandwich", category: Category.breakfast, rating: 4.9, time: "10min", calories: "690cal", tags: dummyTags2)
 
 
-let dummyRecipe6 = Recipe(id: UUID().uuidString,name: "Blueberry cake", ingredients: ["1 cup berry", "2 cup flour", "1 cup sugar", "1 cup milk", "1 teaspoon baking soda", "1 teaspoon salt", "1 teaspoon vanilla extract"], instructions: "Firstly 2 cup of baking soda and salt are used to make the cake. 2 cup of flour and backing powder, backing powder and salt are used to make the cake. 1 cup of sugar and milk are used to make the cake. 1 teaspoon of vanilla extract is used to make the cake. 1 cup of berry is used to make the cake. Then mix all the ingredients well. Then put the mixture in a baking dish. Then bake it in a preheated oven at 180°C for  time. Then serve it. ", image: "Berry cake", category: Category.dessert, rating: 4.8, time: "50min", calories: "4690cal",  tags: dummyTags1)
+public let dummyRecipe6 = Recipe(id: UUID().uuidString,name: "Blueberry cake", ingredients: ["1 cup berry", "2 cup flour", "1 cup sugar", "1 cup milk", "1 teaspoon baking soda", "1 teaspoon salt", "1 teaspoon vanilla extract"], instructions: "Firstly 2 cup of baking soda and salt are used to make the cake. 2 cup of flour and backing powder, backing powder and salt are used to make the cake. 1 cup of sugar and milk are used to make the cake. 1 teaspoon of vanilla extract is used to make the cake. 1 cup of berry is used to make the cake. Then mix all the ingredients well. Then put the mixture in a baking dish. Then bake it in a preheated oven at 180°C for  time. Then serve it. ", image: "Berry cake", category: Category.dessert, rating: 4.8, time: "50min", calories: "4690cal",  tags: dummyTags1)
 
 
 

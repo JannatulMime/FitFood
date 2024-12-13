@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FitFoodCore
 
 struct SinglePopularSection: View {
-    let recipe: Recipe
+    let recipe: FitFoodCore.Recipe
     
     var body: some View {
         VStack {

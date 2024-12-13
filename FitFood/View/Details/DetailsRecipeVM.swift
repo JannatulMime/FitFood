@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FitFoodCore
 
 class DetailsRecipeVM: ObservableObject {
     
@@ -18,11 +19,11 @@ class DetailsRecipeVM: ObservableObject {
        
     }
     
-    func getIngrediants() -> [String]{
+    func getIngrediants() -> [String] {
         return recipe?.ingredients ?? []
     }
     
-    func getTags() -> [Tag]{
+    func getTags() -> [RecipeTag] {
         return recipe?.tags ?? []
     }
     

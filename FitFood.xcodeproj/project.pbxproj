@@ -13,6 +13,7 @@
 		F31A54872D04046900B1A595 /* FirebaseHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F31A54942D04061700B1A595 /* FitFoodCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; };
 		F31A54952D04061700B1A595 /* FitFoodCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F371446F2D0C78BC0077A4BB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F371446E2D0C78BC0077A4BB /* Kingfisher */; };
 		F3A5A56C2D09254C00E66162 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A5A56B2D09254C00E66162 /* RichTextKit */; };
 		F3A5A56E2D0925B400E66162 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A5A56D2D0925B400E66162 /* RichTextKit */; };
 /* End PBXBuildFile section */
@@ -83,13 +84,6 @@
 			);
 			target = F31A548D2D04061700B1A595 /* FitFoodCore */;
 		};
-		F31A549E2D04070D00B1A595 /* Exceptions for "FitFoodCore" folder in "FitFood" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Model/Recipe.swift,
-			);
-			target = F3DBCE542CF746AE0033DA7D /* FitFood */;
-		};
 		F31A54A02D04082100B1A595 /* Exceptions for "FitFoodCore" folder in "FitBookMacOs" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -127,7 +121,6 @@
 		F31A548F2D04061700B1A595 /* FitFoodCore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F31A549E2D04070D00B1A595 /* Exceptions for "FitFoodCore" folder in "FitFood" target */,
 				F3BA88612D0471A1001B624F /* Exceptions for "FitFoodCore" folder in "FitFoodAuthTests" target */,
 				F31A54A02D04082100B1A595 /* Exceptions for "FitFoodCore" folder in "FitBookMacOs" target */,
 				F31A54992D04061700B1A595 /* Exceptions for "FitFoodCore" folder in "FitFoodCore" target */,
@@ -173,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371446F2D0C78BC0077A4BB /* Kingfisher in Frameworks */,
 				F31A54842D04038400B1A595 /* FirebaseHelper.framework in Frameworks */,
 				F31A54942D04061700B1A595 /* FitFoodCore.framework in Frameworks */,
 				F3A5A56C2D09254C00E66162 /* RichTextKit in Frameworks */,
@@ -324,6 +318,7 @@
 			name = FitFood;
 			packageProductDependencies = (
 				F3A5A56B2D09254C00E66162 /* RichTextKit */,
+				F371446E2D0C78BC0077A4BB /* Kingfisher */,
 			);
 			productName = FitFood;
 			productReference = F3DBCE552CF746AE0033DA7D /* FitFood.app */;
@@ -365,6 +360,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */,
+				F371446D2D0C78BC0077A4BB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F3DBCE562CF746AE0033DA7D /* Products */;
@@ -891,6 +887,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F371446D2D0C78BC0077A4BB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.2;
+			};
+		};
 		F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielsaidi/RichTextKit.git";
@@ -902,6 +906,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F371446E2D0C78BC0077A4BB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F371446D2D0C78BC0077A4BB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F3A5A56B2D09254C00E66162 /* RichTextKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3A5A56A2D09254C00E66162 /* XCRemoteSwiftPackageReference "RichTextKit" */;

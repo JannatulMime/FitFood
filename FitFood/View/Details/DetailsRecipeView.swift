@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FitFoodCore
 
 struct DetailsRecipeView: View {
     @State var isViewed = false

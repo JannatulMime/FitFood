@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FitFoodCore
 
 struct HomeView: View {
     var userName: String
@@ -117,7 +118,7 @@ extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(recipes) { recipe in
+                    ForEach(vm.popularRecipe) { recipe in
                         SinglePopularSection(recipe: recipe)
                         
                            .onTapGesture {
