@@ -18,13 +18,14 @@
 //}
 
 import Foundation
+import FitFoodCore
 
 class CreateRecipeVM: ObservableObject {
     @Published var title: String = ""
     @Published var description: NSAttributedString = NSAttributedString.empty
-    @Published var ingredients: String = ""
-    @Published var category: String = ""
-   // @Published var duration: String = ""
+    @Published var ingredients: [String] = []
+    @Published var category: RecipeCategory?
+    @Published var duration: String = ""
     @Published var image: String? = ""
     @Published var numberOfTime:String = ""
 
@@ -40,13 +41,13 @@ class CreateRecipeVM: ObservableObject {
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
 
-    init(recipe: RecipeData?) {
+    init(recipe: Recipe?) {
         if let recipe = recipe {
             title = recipe.name
-            description = recipe.details
+            description = recipe.instructions
             ingredients = recipe.ingredients
             category = recipe.category
-            numberOfTime = recipe.duration
+            numberOfTime = recipe.time
             image = recipe.image
             isEdit = true
         }
@@ -88,8 +89,10 @@ class CreateRecipeVM: ObservableObject {
       //  goRecipeListPage = isSuccess
     }
 
-    func createRecipe() -> RecipeData {
-        return RecipeData(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
+    func createRecipe() -> Recipe {
+        return Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description, image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
+       // return Recipe(id: UUID().uuidString, name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
+      //  (name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
     }
 
     private func isValid() -> (Bool, String) {
@@ -102,9 +105,9 @@ class CreateRecipeVM: ObservableObject {
         if ingredients.isEmpty {
             return (false, "Please input ingredients")
         }
-        if category.isEmpty {
-            return (false, "Please input category")
-        }
+//        if category.isEmpty {
+//            return (false, "Please input category")
+//        }
         if numberOfTime.isEmpty {
             return (false, "Please input duration")
         }

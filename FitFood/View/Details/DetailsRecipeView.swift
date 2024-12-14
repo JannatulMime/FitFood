@@ -174,7 +174,7 @@ extension DetailsRecipeView {
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-            Text(vm.recipe?.instructions ?? "")
+            Text(vm.recipe?.instructions.description ?? "")
                 .modifier(LightFont(fontSize: FontSize.Small.rawValue))
                 .multilineTextAlignment(.leading)
                 .lineLimit(isViewed ? 20 : 3)

@@ -88,7 +88,7 @@ extension SingleTodaysRecipe {
                 }
                 
                 
-            Text(recipe.category.rawValue)
+            Text(recipe.category.title)
                 .modifier(LightFont(fontSize: FontSize.ExtraSmall.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
 

@@ -24,7 +24,10 @@ class HomeVM: ObservableObject {
         Task{
             let popularRecipeResult = await firebaseRecipeManager.fetchDataList()
             if let recipes = popularRecipeResult.0 {
-                popularRecipe = recipes 
+                DispatchQueue.main.async {
+                    self.popularRecipe = recipes
+                }
+               
             }
             
         }

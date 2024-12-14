@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 
 extension String {
@@ -19,11 +19,11 @@ extension String {
 
 extension String{
     
-    func toAttributedString() -> AttributedString {
+    public func toAttributedString() -> AttributedString {
         return AttributedString(self.toNsAttributedString())
     }
     
-    func toAttributedTextForPlaceHolder() -> AttributedString{
+    public func toAttributedTextForPlaceHolder() -> AttributedString{
         let string = self
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.gray, //Constants.ColorAsset.descriptionText,
@@ -33,7 +33,7 @@ extension String{
         return  AttributedString(attributedString)
     }
     
-    func toNsAttributedString() -> NSAttributedString {
+    public func toNsAttributedString() -> NSAttributedString {
         let data = Data(self.utf8)
         if self.isEmpty {
             return NSAttributedString(string: self)

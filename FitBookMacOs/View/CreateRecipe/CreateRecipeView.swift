@@ -7,6 +7,7 @@
 
 import RichTextKit
 import SwiftUI
+import FitFoodCore
 
 struct CreateRecipeView: View {
     
@@ -19,7 +20,7 @@ struct CreateRecipeView: View {
     @StateObject var vm: CreateRecipeVM
     
 
-    init(recipe: RecipeData? = nil) {
+    init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
         let isEdit = recipe != nil
         topBarConfig = CommonTopBarData(title: isEdit ? "Edit" : "Create", bgColor: Color.theme.navyBlue, leftIconName: "chevron.left", rightIconName: isEdit ? "xmark.circle" : "")
@@ -67,9 +68,9 @@ extension CreateRecipeView {
 
                 selectImageView
 
-                ingredients
-
-                selectCategory
+//                ingredients
+//
+//                selectCategory
               
                 durationTime
                
@@ -82,44 +83,27 @@ extension CreateRecipeView {
         .padding()
     }
 
-    var selectCategory: some View {
-//        HStack {
-//            Text("Category - ")
-//                .font(.headline)
-//                .fontWeight(.bold)
-//                .foregroundStyle(.gray)
+//    var selectCategory: some View {
 //
-//            Spacer()
-//
-//            Picker("Catagory", selection: $vm.category) {
-//                ForEach(catagories, id: \.self) { catagory in
-//                    Text(catagory)
-//                }
-//            }.pickerStyle(MenuPickerStyle())
-//
-//                .tint(.merun)
-//
-//            // Spacer()
-//        }
-        
-        Picker("Catagory", selection: $vm.category) {
-            ForEach(catagories, id: \.self) {
-                Text("\($0)")
-            }.foregroundStyle(.blue)
-            
-        }.pickerStyle(.navigationLink)
-        .tint(.gray)
-        .fontWeight(.bold)
-        
-        .frame(height: 20)
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(color: .gray, radius: 2, x: -1, y: 1)
-        )
-    }
+//        
+//        Picker("Catagory", selection: $vm.category) {
+//            ForEach(catagories, id: \.self) {
+//                Text("\($0)")
+//            }.foregroundStyle(.blue)
+//            
+//        }.pickerStyle(.navigationLink)
+//        .tint(.gray)
+//        .fontWeight(.bold)
+//        
+//        .frame(height: 20)
+//        .frame(maxWidth: .infinity)
+//        .padding()
+//        .background(
+//            RoundedRectangle(cornerRadius: 10)
+//                .fill(Color.white)
+//                .shadow(color: .gray, radius: 2, x: -1, y: 1)
+//        )
+//    }
 
     var saveOption: some View {
         HStack {
@@ -186,27 +170,27 @@ extension CreateRecipeView {
         }
     }
 
-    var ingredients: some View {
-        VStack(alignment: .leading) {
-            Text("Ingredients")
-                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
-
-            TextField("", text: $vm.ingredients,
-                      prompt: Text("Write here your ingredients")
-                          .font(.caption)
-                          .foregroundColor(.gray)
-            )
-            .foregroundStyle(.black)
-            .frame(height: 20)
-            .padding()
-
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                    .shadow(color: Color.gray, radius: 2, x: 1, y: 1)
-            )
-        }
-    }
+//    var ingredients: some View {
+//        VStack(alignment: .leading) {
+//            Text("Ingredients")
+//                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+//
+//            TextField("", text: $vm.ingredients,
+//                      prompt: Text("Write here your ingredients")
+//                          .font(.caption)
+//                          .foregroundColor(.gray)
+//            )
+//            .foregroundStyle(.black)
+//            .frame(height: 20)
+//            .padding()
+//
+//            .background(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .fill(Color.white)
+//                    .shadow(color: Color.gray, radius: 2, x: 1, y: 1)
+//            )
+//        }
+//    }
 
     var durationTime: some View {
        
