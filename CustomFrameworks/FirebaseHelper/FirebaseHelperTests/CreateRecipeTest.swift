@@ -43,6 +43,11 @@ class CreateRecipeTest: XCTestCase {
 
         Task {
             let (recipeList,error) = await manager.fetchDataList()
+            
+//            for recipe in recipeList ?? [] {
+//                print(recipe.instructions)
+//            }
+            
             exp.fulfill()
             XCTAssertNotNil(recipeList)
         }

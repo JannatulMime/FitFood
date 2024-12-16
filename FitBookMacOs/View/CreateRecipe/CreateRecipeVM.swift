@@ -18,6 +18,7 @@
 //}
 
 import Foundation
+import FirebaseHelper
 import FitFoodCore
 
 class CreateRecipeVM: ObservableObject {
@@ -40,6 +41,8 @@ class CreateRecipeVM: ObservableObject {
 
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
+    
+    let firebasRecipeManager = FirebaseRecipeManager(root: "Test")
 
     init(recipe: Recipe?) {
         if let recipe = recipe {
@@ -85,23 +88,25 @@ class CreateRecipeVM: ObservableObject {
             return
         }
 
-      //  let isSuccess = isEdit ? updateRecipe() : addRecipe()
-      //  goRecipeListPage = isSuccess
+       let newRecipe = Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description, image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
+        
+        Task{
+            let result = await firebasRecipeManager.addData(recipe: newRecipe)
+            print("created id is \(result.0)  error \(result.1?.localizedDescription)")
+        }
+       
+        
     }
 
-    func createRecipe() -> Recipe {
-        return Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description, image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
-       // return Recipe(id: UUID().uuidString, name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
-      //  (name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
-    }
-
+   
     private func isValid() -> (Bool, String) {
+        return (true,"")
         if title.isEmpty {
             return (false, "Please input title")
         }
-//        if description.length <= 0 {
-//            return (false, "Please input description")
-//        }
+        if description.length <= 0 {
+            return (false, "Please input description")
+        }
         if ingredients.isEmpty {
             return (false, "Please input ingredients")
         }
