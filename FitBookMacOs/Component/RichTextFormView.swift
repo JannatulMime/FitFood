@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RichTextFormView: View {
+    
     var placeHolder: String = ""
     @Binding var text: NSAttributedString
     @State private var showSheet = false

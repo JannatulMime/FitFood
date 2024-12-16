@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F31A54842D04038400B1A595 /* FirebaseHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; };
 		F31A54852D04038400B1A595 /* FirebaseHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F31A54862D04046900B1A595 /* FirebaseHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; };
-		F31A54872D04046900B1A595 /* FirebaseHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F31A54862D04046900B1A595 /* FirebaseHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; platformFilter = ios; };
+		F31A54872D04046900B1A595 /* FirebaseHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A54812D04036F00B1A595 /* FirebaseHelper.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F31A54942D04061700B1A595 /* FitFoodCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; };
 		F31A54952D04061700B1A595 /* FitFoodCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F31A548E2D04061700B1A595 /* FitFoodCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F371446F2D0C78BC0077A4BB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F371446E2D0C78BC0077A4BB /* Kingfisher */; };
@@ -488,7 +488,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -521,7 +521,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

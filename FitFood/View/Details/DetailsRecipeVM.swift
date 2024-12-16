@@ -30,7 +30,7 @@ class DetailsRecipeVM: ObservableObject {
     func getDescription() -> NSAttributedString {
 //        let details = recipe?.instructions.description ?? NSAttributedString().description
 //        return details.toNsAttributedString()
-        return recipe?.instructions ?? NSAttributedString()
+        return recipe?.instructions.toNsAttributedString() ?? NSAttributedString()
     }
     
 }

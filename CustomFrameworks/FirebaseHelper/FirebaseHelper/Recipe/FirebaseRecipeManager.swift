@@ -71,13 +71,13 @@ extension RecipeCodable {
     func toRecipe() -> Recipe {
         // let recipeCategory : Category = Category(rawValue: category)
 
-        Recipe(id: id, name: name, ingredients: ingredients, instructions: instructions.toNsAttributedString(), image: image, category: catBreakfast, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTag() })
+        Recipe(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: catBreakfast, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTag() })
     }
 }
 
 extension Recipe {
     func toCodableRecipe() -> RecipeCodable {
-        RecipeCodable(id: id, name: name, ingredients: ingredients, instructions: instructions.description, image: image, category: category.title, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTagCodable() })
+        RecipeCodable(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: category.title, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTagCodable() })
     }
 
     func toDictionary() -> [String: Any] {
@@ -87,3 +87,5 @@ extension Recipe {
         return dicData
     }
 }
+
+

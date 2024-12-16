@@ -47,7 +47,7 @@ class CreateRecipeVM: ObservableObject {
     init(recipe: Recipe?) {
         if let recipe = recipe {
             title = recipe.name
-            description = recipe.instructions
+            description = recipe.instructions.toNsAttributedString()
             ingredients = recipe.ingredients
             category = recipe.category
             numberOfTime = recipe.time
@@ -88,7 +88,7 @@ class CreateRecipeVM: ObservableObject {
             return
         }
 
-       let newRecipe = Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description, image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
+        let newRecipe = Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
         
         Task{
             let result = await firebasRecipeManager.addData(recipe: newRecipe)
@@ -141,3 +141,5 @@ class CreateRecipeVM: ObservableObject {
 //        }
 //    }
 }
+
+
