@@ -35,10 +35,6 @@ class CreateRecipeVM: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-
-//    @Published var savedEntities: [RecipeEntity] = []
-//    let localRecipeStore: CoreDataRecipeManager = CoreDataRecipeManager()
-
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
     
@@ -79,6 +75,7 @@ class CreateRecipeVM: ObservableObject {
 //        return isSuccess
 //    }
 
+    
     func saveData() {
         let (isValid, message) = isValid()
 

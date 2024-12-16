@@ -9,7 +9,6 @@ import Firebase
 import Foundation
 import XCTest
 import FitFoodCore
-
 import FirebaseHelper
 
 //public protocol FirebaseCreateDataClient{
@@ -18,7 +17,6 @@ import FirebaseHelper
 //                                data: [String: Any]) async -> Result
 //    
 //}
-
 
 
 class CreateRecipeTest: XCTestCase {

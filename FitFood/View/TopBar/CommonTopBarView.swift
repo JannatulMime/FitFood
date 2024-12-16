@@ -17,7 +17,7 @@ struct CommonTopBarData {
 
     init(title: String = "" ,
          bgColor: Color = .blue,
-         forgroundColor : Color = .white,
+         forgroundColor : Color = .black,
          leftIconName: String,
          rightIconName: String = "",
          hasShadow : Bool = true

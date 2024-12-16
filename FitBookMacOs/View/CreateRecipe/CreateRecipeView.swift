@@ -37,16 +37,7 @@ struct CreateRecipeView: View {
 
             })
             contentView
-//                .overlay(
-//                    CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-//                        self.presentationMode.wrappedValue.dismiss()
-//                    }, onRightButtonClicked: {
-//                        self.presentationMode.wrappedValue.dismiss()
-//
-//                    })
-//                    .padding(.bottom, 250)
-//                    .offset(y: -250)
-//                )
+
         }
         .navigationBarBackButtonHidden(true)
 //        .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
@@ -118,7 +109,7 @@ extension CreateRecipeView {
                 vm.saveData()
 
             } label: {
-                Text("Save")
+                Text("Create")
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
                     .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
@@ -150,7 +141,7 @@ extension CreateRecipeView {
                     .fill(Color.white)
                     .shadow(color: Color.gray, radius: 2, x: -1, y: 1)
                    
-                   
+                  
             )
         }
     }

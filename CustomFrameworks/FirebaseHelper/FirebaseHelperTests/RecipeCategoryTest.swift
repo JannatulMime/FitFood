@@ -29,7 +29,7 @@ final class RecipeCategoryTest: XCTestCase {
     }
     
     //Helpers :
-    func makeSUT() -> FirebaseRecipeCategoryManager{
+    func makeSUT() -> FirebaseRecipeCategoryManager {
         FirebaseApp.configure()
        
         let manager = FirebaseRecipeCategoryManager(root: "Test")
