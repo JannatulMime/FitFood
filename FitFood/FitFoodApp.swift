@@ -26,8 +26,8 @@ struct FitFoodApp: App {
     
     var body: some Scene {
         WindowGroup {
-           
-            HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
+            TestAttributedTextShow( attributedText: .constant( "text".toNsAttributedString()))
+           // HomeView(userName: "Pappu", recipes: [dummyRecipe1, dummyRecipe2, dummyRecipe4, dummyRecipe5, dummyRecipe6])
 
         }
     }

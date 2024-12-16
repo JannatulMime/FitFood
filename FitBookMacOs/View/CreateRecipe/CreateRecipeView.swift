@@ -29,7 +29,13 @@ struct CreateRecipeView: View {
     var body: some View {
 
         NavigationStack {
-        
+            
+            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+            }, onRightButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+
+            })
             contentView
 //                .overlay(
 //                    CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
@@ -61,13 +67,7 @@ extension CreateRecipeView {
             VStack(spacing: 20) {
                 Spacer().frame(height: 20)
 
-                
-                CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, onRightButtonClicked: {
-                    self.presentationMode.wrappedValue.dismiss()
-
-                })
+              
                 
                 recipeTitle
 

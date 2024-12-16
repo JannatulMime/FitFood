@@ -75,9 +75,10 @@ struct CommonTopBarView: View {
         }   .padding(.horizontal, 20)
             .padding(.vertical, 8)
             .font(.title3)
-            .foregroundStyle(data.forgroundColor)
+            .foregroundStyle(.black)
+            //.foregroundStyle(data.forgroundColor)
             .background(data.bgColor.ignoresSafeArea()
-                .shadow(radius: data.hasShadow ? 1 : 0))
+            .shadow(radius: data.hasShadow ? 1 : 0))
            
     }
 }

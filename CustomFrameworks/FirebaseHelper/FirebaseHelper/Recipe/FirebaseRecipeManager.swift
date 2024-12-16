@@ -37,7 +37,7 @@ public class FirebaseRecipeManager {
             let snapshot = try await collectionRef.getDocuments()
             let codableRecipeList: [RecipeCodable] = try snapshot.decoded()
             let recipeList: [Recipe] = codableRecipeList.map { $0.toRecipe() }
-
+            
 //            print("datas count \(codableRecipeList.count)")
 //
 //            for data in recipeList {
