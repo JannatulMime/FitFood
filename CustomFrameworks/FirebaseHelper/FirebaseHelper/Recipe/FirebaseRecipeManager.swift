@@ -10,6 +10,7 @@ import FitFoodCore
 import Foundation
 
 public class FirebaseRecipeManager {
+    
     public typealias CreateResult = (String?, Error?)
     public typealias FetchListResult = ([Recipe]?, Error?)
 
