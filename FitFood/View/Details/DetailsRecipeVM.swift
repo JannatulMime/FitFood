@@ -27,4 +27,10 @@ class DetailsRecipeVM: ObservableObject {
         return recipe?.tags ?? []
     }
     
+    func getDescription() -> NSAttributedString {
+//        let details = recipe?.instructions.description ?? NSAttributedString().description
+//        return details.toNsAttributedString()
+        return recipe?.instructions ?? NSAttributedString()
+    }
+    
 }

@@ -7,11 +7,12 @@
 
 import SwiftUI
 import FitFoodCore
+import RichTextKit
 
 struct DetailsRecipeView: View {
     @State var isViewed = false
     @StateObject var vm: DetailsRecipeVM
-    
+    @StateObject var context = RichTextContext()
     @Environment(\.presentationMode) var presentationMode
     
     let topBarConfig = CommonTopBarData(title: "", bgColor: Color.clear, leftIconName: "chevron.left", rightIconName: "")
@@ -170,14 +171,21 @@ extension DetailsRecipeView {
     
     var instructions: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text ("Instructions")
+            
+           
+           Text ("Instructions")
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-            Text(vm.recipe?.instructions.description ?? "")
-                .modifier(LightFont(fontSize: FontSize.Small.rawValue))
-                .multilineTextAlignment(.leading)
-                .lineLimit(isViewed ? 20 : 3)
+            
+        
+            
+          Text(AttributedString(vm.getDescription()))
+//            RichTextViewer( vm.getDescription())
+//                .frame(height: 200)
+//                .modifier(LightFont(fontSize: FontSize.Small.rawValue))
+//                .multilineTextAlignment(.leading)
+//                .lineLimit(isViewed ? 20 : 3)
             
             Button(isViewed ? "Read Less" : "Read More") {
                     isViewed.toggle()

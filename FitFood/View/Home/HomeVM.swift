@@ -27,7 +27,6 @@ class HomeVM: ObservableObject {
                 DispatchQueue.main.async {
                     self.popularRecipe = recipes
                 }
-               
             }
             
         }

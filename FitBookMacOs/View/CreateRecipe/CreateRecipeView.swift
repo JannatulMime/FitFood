@@ -31,16 +31,16 @@ struct CreateRecipeView: View {
         NavigationStack {
         
             contentView
-                .overlay(
-                    CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, onRightButtonClicked: {
-                        self.presentationMode.wrappedValue.dismiss()
-
-                    })
-                    .padding(.bottom, 250)
-                    .offset(y: -250)
-                )
+//                .overlay(
+//                    CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+//                        self.presentationMode.wrappedValue.dismiss()
+//                    }, onRightButtonClicked: {
+//                        self.presentationMode.wrappedValue.dismiss()
+//
+//                    })
+//                    .padding(.bottom, 250)
+//                    .offset(y: -250)
+//                )
         }
         .navigationBarBackButtonHidden(true)
 //        .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
@@ -61,6 +61,13 @@ extension CreateRecipeView {
             VStack(spacing: 20) {
                 Spacer().frame(height: 20)
 
+                
+                CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, onRightButtonClicked: {
+                    self.presentationMode.wrappedValue.dismiss()
+
+                })
                 
                 recipeTitle
 
