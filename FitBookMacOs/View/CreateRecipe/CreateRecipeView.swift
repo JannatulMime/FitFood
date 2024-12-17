@@ -81,10 +81,10 @@ extension CreateRecipeView {
         .padding()
     }
 
+
     var selectCategory: some View {
 
-        
-        Picker("Catagory", selection: $vm.category) {
+        Picker("Catagory", selection: $vm.selectedCategory) {
             ForEach(vm.categoryList, id: \.self) {
                 Text("\($0.title)")
             }.foregroundStyle(.blue)
@@ -92,7 +92,6 @@ extension CreateRecipeView {
         }.pickerStyle(.navigationLink)
         .tint(.gray)
         .fontWeight(.bold)
-        
         .frame(height: 20)
         .frame(maxWidth: .infinity)
         .padding()

@@ -5,57 +5,57 @@
 //  Created by Habibur Rahman on 3/12/24.
 //
 
-
-//import Foundation
-//import FirebaseHelper
+// import Foundation
+// import FirebaseHelper
 //
-//class CreateRecipeVM: ObservableObject {
+// class CreateRecipeVM: ObservableObject {
 //    //var datas = [FirebaseHelper.Recipe]()
 //    init() {
 //        let helper = FirebaseDataHelper()
 //       // helper.fetchAllRecipe()
 //    }
-//}
+// }
 
-import Foundation
 import FirebaseHelper
 import FitFoodCore
+import Foundation
 
 class CreateRecipeVM: ObservableObject {
     @Published var title: String = ""
     @Published var description: NSAttributedString = NSAttributedString.empty
     @Published var ingredients: [String] = []
-    @Published var category: RecipeCategory?
+
+    @Published var selectedCategory: RecipeCategory = RecipeCategory(id: UUID().uuidString, title: "", imageUrl: "")
+
     @Published var duration: String = ""
     @Published var image: String? = ""
-    @Published var numberOfTime:String = ""
+    @Published var numberOfTime: String = ""
 
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage: Data?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
-    
+
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
-    
+
     let firebasRecipeManager = FirebaseRecipeManager(root: "Test")
-    
+
     @Published var categoryList: [RecipeCategory] = []
     let firebaseCategoryManager = FirebaseRecipeCategoryManager(root: "Test")
-    
-    
-    
+    @Published var categoryListString: [String] = ["one", "two", "three"]
+
     init(recipe: Recipe?) {
         if let recipe = recipe {
             title = recipe.name
             description = recipe.instructions.toNsAttributedString()
             ingredients = recipe.ingredients
-            category = recipe.category
+            // categories = recipe.category
             numberOfTime = recipe.time
             image = recipe.image
             isEdit = true
         }
-        
+
         Task {
             let categoriesResult = await firebaseCategoryManager.fetchDataList()
             if let categories = categoriesResult.0 {
@@ -64,7 +64,6 @@ class CreateRecipeVM: ObservableObject {
                 }
             }
         }
-        
     }
 
 //    private func addRecipe() -> Bool {
@@ -90,7 +89,6 @@ class CreateRecipeVM: ObservableObject {
 //        return isSuccess
 //    }
 
-    
     func saveData() {
         let (isValid, message) = isValid()
 
@@ -100,19 +98,16 @@ class CreateRecipeVM: ObservableObject {
             return
         }
 
-        let newRecipe = Recipe(id : UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
-        
-        Task{
+        let newRecipe = Recipe(id: UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
+
+        Task {
             let result = await firebasRecipeManager.addData(recipe: newRecipe)
-            print("created id is \(result.0)  error \(result.1?.localizedDescription)")
+          //  print("created id is \(String(describing: result.0))  error \(String(describing: result.1?.localizedDescription))")
         }
-       
-        
     }
 
-   
     private func isValid() -> (Bool, String) {
-        return (true,"")
+        return (true, "")
         if title.isEmpty {
             return (false, "Please input title")
         }
@@ -153,5 +148,3 @@ class CreateRecipeVM: ObservableObject {
 //        }
 //    }
 }
-
-
