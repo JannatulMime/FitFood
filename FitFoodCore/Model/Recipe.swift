@@ -18,7 +18,7 @@ public enum Category: String {
     case unknown = ""
 }
 
-public struct RecipeCategory {
+public struct RecipeCategory : Hashable {
     public var id : String
     public let title : String
     public let imageUrl : String

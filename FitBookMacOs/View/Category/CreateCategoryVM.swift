@@ -15,10 +15,11 @@ class CreateCategoryVM: ObservableObject {
     @Published var image: String? = ""
     @Published var pickedImage: Data?
     @Published var category: RecipeCategory?
-   
-    let firebaseCategoryManager = FirebaseRecipeCategoryManager(root: "Test")
     
+    let firebaseCategoryManager = FirebaseRecipeCategoryManager(root: "Test")
+   
     init(recipeCategory: RecipeCategory?) {
+        
         if let category = recipeCategory {
             title = category.title
             image = category.imageUrl
@@ -26,13 +27,12 @@ class CreateCategoryVM: ObservableObject {
         }
     }
     
-    
     func saveCategory() {
         let newCategory = RecipeCategory(id: UUID().uuidString, title: title, imageUrl: image ?? "")
         
         Task{
             let result = await firebaseCategoryManager.addSingleData(category: newCategory)
-            print("created id is \(result.0)  error \(result.1?.localizedDescription)")
+           // print("created id is \(String(describing: result.0))  error \(String(describing: result.1?.localizedDescription))")
         }
        
         

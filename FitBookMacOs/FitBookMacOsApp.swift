@@ -22,8 +22,8 @@ struct FitBookMacOsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-           // CreateRecipeView()
-            CreateCategoryView()
+            CreateRecipeView()
+           // CreateCategoryView()
         }
     }
 }

@@ -14,6 +14,8 @@ struct CreateCategoryView: View {
     @Environment(\.presentationMode) var presentationMode
     var topBarConfig: CommonTopBarData
     
+    
+    
     init(recipeCategory: RecipeCategory? = nil) {
         _vm = StateObject(wrappedValue: CreateCategoryVM(recipeCategory: recipeCategory))
        

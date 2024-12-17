@@ -12,7 +12,7 @@ import FitFoodCore
 struct CreateRecipeView: View {
     
     var topBarConfig: CommonTopBarData
-    var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
+   
     var times = ["10", "20", "30", "40", "50", "60"]
     
     @State private var selectedDate = Date()
@@ -68,7 +68,7 @@ extension CreateRecipeView {
 
 //                ingredients
 //
-//                selectCategory
+                selectCategory
               
                 durationTime
                
@@ -81,27 +81,27 @@ extension CreateRecipeView {
         .padding()
     }
 
-//    var selectCategory: some View {
-//
-//        
-//        Picker("Catagory", selection: $vm.category) {
-//            ForEach(catagories, id: \.self) {
-//                Text("\($0)")
-//            }.foregroundStyle(.blue)
-//            
-//        }.pickerStyle(.navigationLink)
-//        .tint(.gray)
-//        .fontWeight(.bold)
-//        
-//        .frame(height: 20)
-//        .frame(maxWidth: .infinity)
-//        .padding()
-//        .background(
-//            RoundedRectangle(cornerRadius: 10)
-//                .fill(Color.white)
-//                .shadow(color: .gray, radius: 2, x: -1, y: 1)
-//        )
-//    }
+    var selectCategory: some View {
+
+        
+        Picker("Catagory", selection: $vm.category) {
+            ForEach(vm.categoryList, id: \.self) {
+                Text("\($0.title)")
+            }.foregroundStyle(.blue)
+            
+        }.pickerStyle(.navigationLink)
+        .tint(.gray)
+        .fontWeight(.bold)
+        
+        .frame(height: 20)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(color: .gray, radius: 2, x: -1, y: 1)
+        )
+    }
 
     var saveOption: some View {
         HStack {

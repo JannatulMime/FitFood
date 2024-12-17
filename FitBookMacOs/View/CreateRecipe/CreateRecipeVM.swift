@@ -39,7 +39,12 @@ class CreateRecipeVM: ObservableObject {
     let localFileStore = LocalFileStore()
     
     let firebasRecipeManager = FirebaseRecipeManager(root: "Test")
-
+    
+    @Published var categoryList: [RecipeCategory] = []
+    let firebaseCategoryManager = FirebaseRecipeCategoryManager(root: "Test")
+    
+    
+    
     init(recipe: Recipe?) {
         if let recipe = recipe {
             title = recipe.name
@@ -50,6 +55,16 @@ class CreateRecipeVM: ObservableObject {
             image = recipe.image
             isEdit = true
         }
+        
+        Task {
+            let categoriesResult = await firebaseCategoryManager.fetchDataList()
+            if let categories = categoriesResult.0 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.categoryList = categories
+                }
+            }
+        }
+        
     }
 
 //    private func addRecipe() -> Bool {
