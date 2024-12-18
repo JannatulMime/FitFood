@@ -21,20 +21,22 @@ struct RichTextFormView: View {
                     .foregroundColor(text.length == 0 ? Color.gray : Color.white)
 
                 Spacer()
-            }.padding(.leading)
+            }
+            .padding(.leading)
             Image(systemName: "square.and.pencil")
-        }
+        } .padding()
+        
        
         .frame(maxWidth: .infinity, alignment: .top)
        // .modifier(DefaultRoundedRectangleOverlay(cornerRadius: 10))
-        .padding()
-        .padding()
+       // .padding()
+        .padding(.vertical, 30)
        
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: Color.gray, radius: 2, x: -1, y: 2)
-                
+                .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
+              
         )
         .onTapGesture {
             showSheet = true

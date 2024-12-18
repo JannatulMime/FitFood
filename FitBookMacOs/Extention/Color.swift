@@ -15,8 +15,8 @@ extension Color {
         let lightGray = Color("LightGray")
         let navyBlue = Color("NavyBlue")
         
-//        let primaryText = Color("PrimaryText")
-//        
+       let darkGray = Color("DarkGray")
+//
 //        let levenda = Color("Levenda")
 //        let merun = Color("Merun")
 //        

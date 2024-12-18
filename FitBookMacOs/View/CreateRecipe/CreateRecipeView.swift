@@ -55,11 +55,8 @@ extension CreateRecipeView {
 //        VStack(alignment: .leading, spacing: 15) {
         ScrollView(showsIndicators: false) {
             
-            VStack(spacing: 20) {
-                Spacer().frame(height: 20)
+            VStack(spacing: 10) {
 
-              
-                
                 recipeTitle
 
                 description
@@ -98,8 +95,8 @@ extension CreateRecipeView {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: .gray, radius: 2, x: -1, y: 1)
-        )
+                .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
+        ).padding()
     }
 
     var saveOption: some View {
@@ -122,9 +119,10 @@ extension CreateRecipeView {
     }
 
     var recipeTitle: some View {
-        VStack(alignment: .leading) {
-            Text("Title")
-                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+        VStack(alignment: .leading, spacing: 20) {
+       
+                Text("Title")
+                    .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
 
             TextField("", text: $vm.title,
                       prompt: Text("Enter title")
@@ -138,21 +136,20 @@ extension CreateRecipeView {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
-                    .shadow(color: Color.gray, radius: 2, x: -1, y: 1)
-                   
+                    .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
                   
             )
-        }
+        }.padding()
     }
 
     var description: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 20) {
             Text("Description")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
             // .padding(.bottom, 2)
 
             RichTextFormView(placeHolder: "Details", text: $vm.description)
-        }
+        }.padding()
     }
 
     var selectImageView: some View {
@@ -164,7 +161,7 @@ extension CreateRecipeView {
                 .frame(maxWidth: .infinity)
                 .frame(height: 170)
             
-        }
+        }.padding()
     }
 
 //    var ingredients: some View {
@@ -204,10 +201,12 @@ extension CreateRecipeView {
         .frame(height: 15)
         .frame(maxWidth: .infinity)
         .padding()
+       
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: Color.theme.lightGray, radius: 2, x: 1, y: 2)
-        )
+                .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
+                
+        ).padding()
     }
 }
