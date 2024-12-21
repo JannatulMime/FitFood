@@ -39,6 +39,8 @@ struct CreateCategoryView: View {
 extension CreateCategoryView {
     var contentView: some View {
         VStack(spacing: 50) {
+            Spacer()
+                .frame(height: 5)
             VStack(alignment: .leading) {
                 Text("Title")
                     .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
@@ -82,11 +84,11 @@ extension CreateCategoryView {
                         .frame(maxWidth: .infinity)
                         .modifier(CustomTextModifier(fontSize: 20, color: .white, weight: .bold))
                         .WithDefaultRectangularBgModifier(bgColor: Color.theme.navyBlue, cornerRadius: 20)
-                        .padding(.horizontal, 50)
+                      
                 }
             }
 
-        }.padding()
+        }.padding(.horizontal, 30)
        
     }
 }
