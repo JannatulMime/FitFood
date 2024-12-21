@@ -5,20 +5,18 @@
 //  Created by Habibur Rahman on 11/12/24.
 //
 
+import FitFoodCore
 import RichTextKit
 import SwiftUI
-import FitFoodCore
 
 struct CreateRecipeView: View {
-    
     var topBarConfig: CommonTopBarData
-   
+
     var times = ["10", "20", "30", "40", "50", "60"]
-    
+
     @State private var selectedDate = Date()
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
-    
 
     init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
@@ -27,9 +25,7 @@ struct CreateRecipeView: View {
     }
 
     var body: some View {
-
         NavigationStack {
-            
             CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
                 self.presentationMode.wrappedValue.dismiss()
             }, onRightButtonClicked: {
@@ -37,7 +33,6 @@ struct CreateRecipeView: View {
 
             })
             contentView
-
         }
         .navigationBarBackButtonHidden(true)
 //        .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
@@ -52,21 +47,19 @@ struct CreateRecipeView: View {
 
 extension CreateRecipeView {
     var contentView: some View {
-//        VStack(alignment: .leading, spacing: 15) {
+        //        VStack(alignment: .leading, spacing: 15) {
         ScrollView(showsIndicators: false) {
-            
-            VStack(spacing: 10) {
-
+            VStack(spacing: 5) {
                 recipeTitle
 
                 description
 
                 selectImageView
 
-//                ingredients
-//
+                //                ingredients
+                //
                 selectCategory
-              
+
                 durationTime
                
                 Spacer()
@@ -78,25 +71,24 @@ extension CreateRecipeView {
         .padding()
     }
 
-
     var selectCategory: some View {
+        HStack {
+            Picker("", selection: $vm.selectedCategory) {
+                ForEach(vm.categoryList, id: \.self) {
+                    Text("\($0.title)")
+                }.foregroundStyle(.blue)
 
-        Picker("Catagory", selection: $vm.selectedCategory) {
-            ForEach(vm.categoryList, id: \.self) {
-                Text("\($0.title)")
-            }.foregroundStyle(.blue)
-            
-        }.pickerStyle(.navigationLink)
-        .tint(.gray)
-        .fontWeight(.bold)
-        .frame(height: 20)
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
-        ).padding()
+            }.pickerStyle(.navigationLink)
+                .frame(height: 20)
+                .background(
+                    DefaultFormPicker(iconName: "folder.circle",
+                                      mainTitle: "Category",
+                                      rightTitle: vm.selectedCategory.title, isRequired: true)
+                ).padding()
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
+                .padding()
+        }
     }
 
     var saveOption: some View {
@@ -119,10 +111,9 @@ extension CreateRecipeView {
     }
 
     var recipeTitle: some View {
-        VStack(alignment: .leading, spacing: 20) {
-       
-                Text("Title")
-                    .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Title")
+                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
 
             TextField("", text: $vm.title,
                       prompt: Text("Enter title")
@@ -137,13 +128,12 @@ extension CreateRecipeView {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
-                  
             )
         }.padding()
     }
 
     var description: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 15) {
             Text("Description")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
             // .padding(.bottom, 2)
@@ -160,7 +150,7 @@ extension CreateRecipeView {
             CustomImagePicker(selectedImageData: $vm.pickedImage)
                 .frame(maxWidth: .infinity)
                 .frame(height: 170)
-            
+
         }.padding()
     }
 
@@ -187,26 +177,22 @@ extension CreateRecipeView {
 //    }
 
     var durationTime: some View {
-       
-                Picker("Duration", selection: $vm.numberOfTime) {
-                    ForEach(times, id: \.self) {
-                        Text("\($0) min")
-                    }.foregroundStyle(Color.theme.navyBlue)
-                    
-                }.pickerStyle(.navigationLink)
-                
-                    .tint(.gray)
-                    .fontWeight(.bold)
-    
-        .frame(height: 15)
-        .frame(maxWidth: .infinity)
-        .padding()
-       
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1)
-                
-        ).padding()
+        HStack {
+            Picker("", selection: $vm.numberOfTime) {
+                ForEach(times, id: \.self) {
+                    Text("\($0) min")
+                }.foregroundStyle(Color.theme.navyBlue)
+
+            }.pickerStyle(.navigationLink)
+                .frame(height: 20)
+                .background(
+                    DefaultFormPicker(iconName: "timer",
+                                      mainTitle: "Duration",
+                                      rightTitle: vm.selectedCategory.title, isRequired: true)
+                ).padding()
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
+                .padding()
+        }
     }
 }

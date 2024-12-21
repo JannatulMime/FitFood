@@ -24,18 +24,16 @@ class CreateRecipeVM: ObservableObject {
     @Published var title: String = ""
     @Published var description: NSAttributedString = NSAttributedString.empty
     @Published var ingredients: [String] = []
-
     @Published var selectedCategory: RecipeCategory = RecipeCategory(id: UUID().uuidString, title: "", imageUrl: "")
-
     @Published var duration: String = ""
     @Published var image: String? = ""
     @Published var numberOfTime: String = ""
-
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage: Data?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
-
+    @Published var showPicker = false
+    
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
 
