@@ -57,10 +57,11 @@ struct DefaultFormPicker: View {
     
     func getRightTitle() -> String {
         
-        if rightTitle.isEmpty || rightTitle == "" {
-            return isRequired ? "Required" : "Select"
-        }
         return rightTitle
+//        if rightTitle.isEmpty || rightTitle == "" {
+//            return isRequired ? "Required" : "Select"
+//        }
+//        return rightTitle
     }
    
 }

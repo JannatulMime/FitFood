@@ -12,8 +12,6 @@ import SwiftUI
 struct CreateRecipeView: View {
     var topBarConfig: CommonTopBarData
 
-    var times = ["10", "20", "30", "40", "50", "60"]
-
     @State private var selectedDate = Date()
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
@@ -76,14 +74,15 @@ extension CreateRecipeView {
             Picker("", selection: $vm.selectedCategory) {
                 ForEach(vm.categoryList, id: \.self) {
                     Text("\($0.title)")
-                }.foregroundStyle(.blue)
+                        .padding(.trailing,20)
+                }
 
             }.pickerStyle(.navigationLink)
                 .frame(height: 20)
                 .background(
                     DefaultFormPicker(iconName: "folder.circle",
                                       mainTitle: "Category",
-                                      rightTitle: vm.selectedCategory.title, isRequired: true)
+                                      rightTitle: vm.selectedCategory.id == "-1" ? "Select" :  "")
                 ).padding()
                 .background(RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
@@ -178,9 +177,10 @@ extension CreateRecipeView {
 
     var durationTime: some View {
         HStack {
-            Picker("", selection: $vm.numberOfTime) {
-                ForEach(times, id: \.self) {
+            Picker("", selection: $vm.selectedDuration) {
+                ForEach(vm.durationList, id: \.self) {
                     Text("\($0) min")
+                        .padding(.trailing,20)
                 }.foregroundStyle(Color.theme.navyBlue)
 
             }.pickerStyle(.navigationLink)
@@ -188,7 +188,7 @@ extension CreateRecipeView {
                 .background(
                     DefaultFormPicker(iconName: "timer",
                                       mainTitle: "Duration",
-                                      rightTitle: vm.selectedCategory.title, isRequired: true)
+                                      rightTitle:  vm.selectedDuration == "" ? "Select" : "")
                 ).padding()
                 .background(RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))

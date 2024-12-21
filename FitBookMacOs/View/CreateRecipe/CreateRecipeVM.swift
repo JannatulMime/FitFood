@@ -24,10 +24,9 @@ class CreateRecipeVM: ObservableObject {
     @Published var title: String = ""
     @Published var description: NSAttributedString = NSAttributedString.empty
     @Published var ingredients: [String] = []
-    @Published var selectedCategory: RecipeCategory = RecipeCategory(id: UUID().uuidString, title: "", imageUrl: "")
+    @Published var selectedCategory: RecipeCategory = RecipeCategory(id: "-1", title: "", imageUrl: "")
     @Published var duration: String = ""
     @Published var image: String? = ""
-    @Published var numberOfTime: String = ""
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage: Data?
     @Published var showAlert: Bool = false
@@ -42,6 +41,10 @@ class CreateRecipeVM: ObservableObject {
     @Published var categoryList: [RecipeCategory] = []
     let firebaseCategoryManager = FirebaseRecipeCategoryManager(root: "Test")
     @Published var categoryListString: [String] = ["one", "two", "three"]
+    
+    @Published var selectedDuration: String = ""
+    var durationList: [String] = ["10", "20", "30", "40", "50", "60"]
+    
 
     init(recipe: Recipe?) {
         if let recipe = recipe {
@@ -49,7 +52,7 @@ class CreateRecipeVM: ObservableObject {
             description = recipe.instructions.toNsAttributedString()
             ingredients = recipe.ingredients
             // categories = recipe.category
-            numberOfTime = recipe.time
+            selectedDuration = recipe.time
             image = recipe.image
             isEdit = true
         }
@@ -118,7 +121,7 @@ class CreateRecipeVM: ObservableObject {
 //        if category.isEmpty {
 //            return (false, "Please input category")
 //        }
-        if numberOfTime.isEmpty {
+        if selectedDuration == "" {
             return (false, "Please input duration")
         }
 
