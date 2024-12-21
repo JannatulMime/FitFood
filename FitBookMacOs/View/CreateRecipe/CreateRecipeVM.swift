@@ -45,6 +45,7 @@ class CreateRecipeVM: ObservableObject {
     @Published var selectedDuration: String = ""
     var durationList: [String] = ["10", "20", "30", "40", "50", "60"]
     
+    let imageKitUploader = ImageKitImageUploader()
 
     init(recipe: Recipe?) {
         if let recipe = recipe {
@@ -67,29 +68,6 @@ class CreateRecipeVM: ObservableObject {
         }
     }
 
-//    private func addRecipe() -> Bool {
-//        let fileName = UUID().uuidString + "_Local.jpg"
-//        if let imageData = pickedImage {
-//            let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
-//        }
-//
-//        let newRecipe = RecipeData(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: fileName, category: category, id: UUID().uuidString)
-//
-//        return localFileStore.addRecipe(recipe: newRecipe)
-//    }
-//
-//    private func updateRecipe() -> Bool {
-//        let fileName = UUID().uuidString + "_Local.jpg"
-//        if let imageData = pickedImage {
-//            let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
-//        }
-//
-//        let newRecipe = RecipeData(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: fileName, category: category, id: UUID().uuidString)
-//
-//        let isSuccess = updateRecipe(recipe: newRecipe)
-//        return isSuccess
-//    }
-
     func saveData() {
         let (isValid, message) = isValid()
 
@@ -99,11 +77,35 @@ class CreateRecipeVM: ObservableObject {
             return
         }
 
-        let newRecipe = Recipe(id: UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: "", category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
+      
 
         Task {
+            let imagePath = await uploadImage(data: pickedImage)
+            
+            guard let imagePath else { return }
+            
+            let newRecipe = Recipe(id: UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: imagePath, category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
             let result = await firebasRecipeManager.addData(recipe: newRecipe)
-          //  print("created id is \(String(describing: result.0))  error \(String(describing: result.1?.localizedDescription))")
+            
+            if result.0 != nil {
+                print("recipe Id : \( String(describing: result.0))")
+            }
+        }
+    }
+    
+    private func uploadImage(data : Data?) async -> String? {
+        
+        guard let data else { return nil }
+        
+        let imageUploadResult = await imageKitUploader.upload(fileName: UUID().uuidString + ".jpg", data: data)
+        
+        switch imageUploadResult {
+        case let .success(uploadResponseModel):
+            let imageUrlPath = uploadResponseModel.url
+            return imageUrlPath
+          
+        case let .failure(error):
+            return nil
         }
     }
 
@@ -127,25 +129,4 @@ class CreateRecipeVM: ObservableObject {
 
         return (true, "")
     }
-
-//    private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
-//
-//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            return nil
-//        }
-//
-//        // Create a unique file name
-//        let fileName = UUID().uuidString + ".jpg"
-//        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-//
-//        do {
-//            // Save the image data to the file URL
-//            try imageData.write(to: fileURL)
-//            print("Image saved to: \(fileURL)")
-//            return fileURL.absoluteString
-//        } catch {
-//            print("Failed to save image: \(error.localizedDescription)")
-//            return nil
-//        }
-//    }
 }
