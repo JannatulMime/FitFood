@@ -22,9 +22,12 @@ class HomeVM: ObservableObject {
     init() {
         Task{
             let popularRecipeResult = await firebaseRecipeManager.fetchDataList()
-            if let recipes = popularRecipeResult.0 {
+            
+            
+            if let recipes = try? popularRecipeResult.get() {
                 DispatchQueue.main.async {
-                    self.popularRecipe = recipes
+                    let a : [RecipeCodable]? = try? recipes.toModel().get()
+                    self.popularRecipe = a?.map{$0.toRecipe()} ?? []
                 }
             }
             
@@ -32,3 +35,7 @@ class HomeVM: ObservableObject {
        
     }
 }
+
+
+
+

@@ -20,15 +20,10 @@ struct DetailsRecipeView: View {
     init(recipe: Recipe) {
         _vm = StateObject(wrappedValue: DetailsRecipeVM(recipe: recipe))
     }
-
-    
-    
     var body: some View {
-        NavigationStack {
-           
+        NavigationStack {           
             contentView
-                
-            
+
         }
     }
 }
@@ -177,8 +172,6 @@ extension DetailsRecipeView {
                 .modifier(SemiBoldFont(fontSize: FontSize.Regular.rawValue))
                 .foregroundStyle(Color.theme.darkGray)
             
-            
-        
             
           Text(AttributedString(vm.getDescription()))
 //            RichTextViewer( vm.getDescription())

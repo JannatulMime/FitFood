@@ -29,9 +29,10 @@ class CreateCategoryVM: ObservableObject {
     
     func saveCategory() {
         let newCategory = RecipeCategory(id: UUID().uuidString, title: title, imageUrl: image ?? "")
+        let data = newCategory.toDictionary()
         
         Task{
-            let result = await firebaseCategoryManager.addSingleData(category: newCategory)
+            let result = await firebaseCategoryManager.addSingleData(id: newCategory.id, data: data)
            // print("created id is \(String(describing: result.0))  error \(String(describing: result.1?.localizedDescription))")
         }
        

@@ -85,7 +85,9 @@ class CreateRecipeVM: ObservableObject {
             guard let imagePath else { return }
             
             let newRecipe = Recipe(id: UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: imagePath, category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
-            let result = await firebasRecipeManager.addData(recipe: newRecipe)
+           
+            let data : [String:Any] = newRecipe.toDictionary()
+            let result = await firebasRecipeManager.addData(id: newRecipe.id,data: data)
             
             if result.0 != nil {
                 print("recipe Id : \( String(describing: result.0))")

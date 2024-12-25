@@ -11,17 +11,18 @@ import Firebase
 import Foundation
 import FitFoodCore
 
-import FirebaseHelper
+@testable import FirebaseHelper
 
 final class RecipeCategoryTest: XCTestCase {
 
     func test_createSingleCategory() {
-        let data = catBreakfast
+        let data = dummyCat//catBreakfast.toDictionary()
+        print("Data is - \(data)")
         let manager = makeSUT()
         let exp = expectation(description: "Create Category")
 
         Task {
-            let (id,_) = await manager.addSingleData(category: data)
+            let (id,_) = await manager.addSingleData(id: catBreakfast.id,data: data)
             exp.fulfill()
             XCTAssertNotNil(id)
         }
@@ -36,5 +37,12 @@ final class RecipeCategoryTest: XCTestCase {
         
         return manager
     }
+    
+    var dummyCat : [String: Any] {
+        ["title":"test cat 01","imageUrl":"", "id": "1"]
+    }
 
 }
+
+
+

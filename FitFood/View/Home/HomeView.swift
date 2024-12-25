@@ -58,22 +58,21 @@ struct HomeView: View {
 extension HomeView {
     var profileNameAndImage: some View {
         HStack {
-            Text("Welcome,  \(userName)")
-                .modifier(BoldFont(fontSize: FontSize.Large.rawValue))
-                .foregroundStyle(Color.theme.darkOrange)
-                
-            
-            Spacer()
             
             VStack {
                 Image("Berry cake")
                     .resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 40, height: 40)
                     .clipShape(.circle)
                     .scaledToFit()
             }.onTapGesture {
                 vm.goToProfileView = true
             }
+
+            
+            Text("Welcome,  \(userName)")
+                .modifier(BoldFont(fontSize: FontSize.Large.rawValue))
+                .foregroundStyle(Color.theme.darkOrange)
             
         }
     }

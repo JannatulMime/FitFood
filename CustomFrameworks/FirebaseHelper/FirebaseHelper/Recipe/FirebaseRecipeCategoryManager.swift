@@ -34,11 +34,11 @@ public class FirebaseRecipeCategoryManager {
 //        }
 //    }
     
-    public func addSingleData(category: RecipeCategory) async -> CreateResult {
+    public func addSingleData(id : String, data: [String: Any]) async -> CreateResult {
         do {
-            let data = category.toDictionary()
-            _ = try await collectionRef.document(category.id).setData(data)
-            return (category.id, nil)
+           // let data = category.toDictionary()
+            _ = try await collectionRef.document(id).setData(data)
+            return (id, nil)
         } catch {
             // print("in catch")
             return (nil, error)
@@ -77,32 +77,6 @@ public class FirebaseRecipeCategoryManager {
 //                return (nil, error)
 //            }
 //        }
-    }
-}
-
-struct RecipeCategoryCodable : Codable {
-    public let id : String
-    public let title : String
-    public let imageUrl : String
-}
-
-extension RecipeCategoryCodable {
-     func toRecipeCategory() -> RecipeCategory {
-        RecipeCategory(id: id, title: title, imageUrl: imageUrl)
-    }
-}
-
-extension RecipeCategory {
-   
-    func toCodable() -> RecipeCategoryCodable {
-        RecipeCategoryCodable(id: id, title: title, imageUrl: imageUrl)
-    }
-
-    func toDictionary() -> [String: Any] {
-        let dicData = toCodable().toDictionary() ?? [:]
-
-        print(dicData)
-        return dicData
     }
 }
 
