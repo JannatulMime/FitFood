@@ -20,8 +20,8 @@ struct DefaultFormPicker: View {
                 Image(systemName: iconName)
                     .resizable()
                    
-                    .frame(width: 25, height: 25)
-                    .padding(5)
+                    .frame(width: 20, height: 20)
+                    .padding(7)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.theme.navyBlue)
@@ -37,7 +37,7 @@ struct DefaultFormPicker: View {
             Spacer()
             
             Text(getRightTitle())
-                .foregroundStyle(.gray)
+                .foregroundStyle(Color.theme.darkGray)
                 .font(.system(size: 16))
             
         

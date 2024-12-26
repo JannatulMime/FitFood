@@ -54,16 +54,28 @@ extension CreateRecipeView {
 
                 selectImageView
 
-                //                ingredients
-                //
-                selectCategory
-
-                durationTime
+                // ingredients
+                
+                VStack {
+                    selectCategory
+                    
+                    Divider()
+                        .frame(height: 1)
+                        .background(Color.theme.lightGray)
+                    
+                    durationTime
+                }
+                
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
+                .padding()
                
                 Spacer()
                 saveOption
                 Spacer().frame(height: 5)
             }
+            
+           
         }
         .background(Color.white)
         .padding()
@@ -78,20 +90,23 @@ extension CreateRecipeView {
                 }
 
             }.pickerStyle(.navigationLink)
-                .frame(height: 20)
+                .frame(height: 30)
                 .background(
                     DefaultFormPicker(iconName: "folder.circle",
                                       mainTitle: "Category",
                                       rightTitle: vm.selectedCategory.id == "-1" ? "Select" :  "")
                 ).padding()
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
-                .padding()
+                
         }
     }
 
     var saveOption: some View {
         HStack {
+            if vm.isLoading {
+                LoadingView()
+            }
+            
+            
             Button {
                 vm.saveData()
 
@@ -120,7 +135,7 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .frame(height: 15)
+            .frame(height: 20)
             .padding()
 
             .background(
@@ -184,15 +199,13 @@ extension CreateRecipeView {
                 }.foregroundStyle(Color.theme.navyBlue)
 
             }.pickerStyle(.navigationLink)
-                .frame(height: 20)
+                .frame(height: 30)
                 .background(
                     DefaultFormPicker(iconName: "timer",
                                       mainTitle: "Duration",
                                       rightTitle:  vm.selectedDuration == "" ? "Select" : "")
                 ).padding()
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white).shadow(color: Color.theme.darkGray, radius: 2, x: 0, y: 1))
-                .padding()
+
         }
     }
 }

@@ -32,6 +32,7 @@ class CreateRecipeVM: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var showPicker = false
+    @Published var isLoading = false
     
     var isEdit: Bool = false
     let localFileStore = LocalFileStore()
