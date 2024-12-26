@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FitFoodCore
+
 
 public struct RecipeCodable: Codable, Identifiable {
     public let id: String
@@ -31,6 +31,14 @@ public struct RecipeCodable: Codable, Identifiable {
         self.time = time
         self.calories = calories
         self.tags = tags
+    }
+}
+
+extension RecipeCodable {
+    public func toRecipe() -> Recipe {
+        // let recipeCategory : Category = Category(rawValue: category)
+
+        Recipe(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: catBreakfast, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTag() })
     }
 }
 

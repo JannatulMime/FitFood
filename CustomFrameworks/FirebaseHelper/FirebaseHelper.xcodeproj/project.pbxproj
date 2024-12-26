@@ -12,7 +12,6 @@
 		F32271F72D03470B005D51C8 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F32271F62D03470B005D51C8 /* FirebaseAuthCombine-Community */; };
 		F32271F92D03470B005D51C8 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F32271F82D03470B005D51C8 /* FirebaseCore */; };
 		F32271FB2D03470B005D51C8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F32271FA2D03470B005D51C8 /* FirebaseDatabase */; };
-		F32271FD2D03470B005D51C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F32271FC2D03470B005D51C8 /* FirebaseFirestore */; };
 		F32271FF2D03470B005D51C8 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F32271FE2D03470B005D51C8 /* FirebaseFirestoreCombine-Community */; };
 		F32272012D03470B005D51C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F32272002D03470B005D51C8 /* FirebaseStorage */; };
 		F32272032D03470B005D51C8 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F32272022D03470B005D51C8 /* FirebaseStorageCombine-Community */; };
@@ -102,7 +101,6 @@
 				F32271FB2D03470B005D51C8 /* FirebaseDatabase in Frameworks */,
 				F32271FF2D03470B005D51C8 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				F32272012D03470B005D51C8 /* FirebaseStorage in Frameworks */,
-				F32271FD2D03470B005D51C8 /* FirebaseFirestore in Frameworks */,
 				F32271F72D03470B005D51C8 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +181,6 @@
 				F32271F62D03470B005D51C8 /* FirebaseAuthCombine-Community */,
 				F32271F82D03470B005D51C8 /* FirebaseCore */,
 				F32271FA2D03470B005D51C8 /* FirebaseDatabase */,
-				F32271FC2D03470B005D51C8 /* FirebaseFirestore */,
 				F32271FE2D03470B005D51C8 /* FirebaseFirestoreCombine-Community */,
 				F32272002D03470B005D51C8 /* FirebaseStorage */,
 				F32272022D03470B005D51C8 /* FirebaseStorageCombine-Community */,
@@ -617,11 +614,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F32271F32D03470B005D51C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
-		};
-		F32271FC2D03470B005D51C8 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F32271F32D03470B005D51C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
 		};
 		F32271FE2D03470B005D51C8 /* FirebaseFirestoreCombine-Community */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -30,6 +30,36 @@ public struct RecipeCategory : Hashable {
     }
 }
 
+public struct RecipeCategoryCodable : Codable {
+    public let id : String
+    public let title : String
+    public let imageUrl : String
+}
+
+extension RecipeCategoryCodable {
+    public func toRecipeCategory() -> RecipeCategory {
+        RecipeCategory(id: id, title: title, imageUrl: imageUrl)
+    }
+}
+
+
+extension RecipeCategory {
+   
+   public func toCodable() -> RecipeCategoryCodable {
+        RecipeCategoryCodable(id: id, title: title, imageUrl: imageUrl)
+    }
+
+   public func toDictionary() -> [String: Any] {
+        let dicData = toCodable().toDictionary() ?? [:]
+
+        print(dicData)
+        return dicData
+    }
+}
+
+
+
+
 public struct RecipeTag : Identifiable {
     public let id : String
     public let title : String
@@ -65,6 +95,19 @@ public struct Recipe: Identifiable {
         self.tags = tags
     }
     
+}
+
+extension Recipe {
+    public func toCodableRecipe() -> RecipeCodable {
+        RecipeCodable(id: id, name: name, ingredients: ingredients, instructions: instructions, image: image, category: category.title, rating: rating, time: time, calories: calories, tags: tags.map { $0.toTagCodable() })
+    }
+
+    public func toDictionary() -> [String: Any] {
+        let dicData = toCodableRecipe().toDictionary() ?? [:]
+
+        print(dicData)
+        return dicData
+    }
 }
 
 extension Recipe {
