@@ -12,8 +12,8 @@ import FirebaseDatabaseInternal
 
 public class FirebaseRecipeManager {
     
-    public typealias CreateResult = (String?, Error?)
-    public typealias FetchListResult = Swift.Result<[[String: Any]],Error> //([Recipe]?, Error?)
+   // public typealias CreateResult = (String?, Error?)
+   // public typealias FetchListResult = Swift.Result<[[String: Any]],Error> //([Recipe]?, Error?)
 
     let firestore = Firestore.firestore()
     let collectionRef: CollectionReference
@@ -22,19 +22,19 @@ public class FirebaseRecipeManager {
         collectionRef = firestore.collection(root).document("Recipes").collection("list")
     }
 
-    public func addData(id : String , data : [String: Any]) async -> CreateResult {
+    public func addData(rootNode : String , data : [String: Any]) async -> FirebaseClient.CreateResult {
         do {
             print("data is - \(data)")
-            let _ = try await collectionRef.document(id).setData(data)//documentRef.addDocument(data: data)
-            return (id, nil)
+            let _ = try await collectionRef.document(rootNode).setData(data)//documentRef.addDocument(data: data)
+            return .success(rootNode)
         } catch {
             // print("in catch")
-            return (nil, error)
+            return .failure(error)
         }
     }
 
     
-    public func fetchDataList() async -> FetchListResult {
+    public func fetchDataList() async -> FirebaseClient.FetchListResult {
         do {
             let snapshot = try await collectionRef.getDocuments()
             let data: [[String: Any]] = snapshot.documents.map { $0.data() }

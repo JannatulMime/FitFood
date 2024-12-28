@@ -32,7 +32,7 @@ class CreateCategoryVM: ObservableObject {
         let data = newCategory.toDictionary()
         
         Task{
-            let result = await firebaseCategoryManager.addSingleData(id: newCategory.id, data: data)
+            let result = await firebaseCategoryManager.addData(rootNode: newCategory.id, data: data)
            // print("created id is \(String(describing: result.0))  error \(String(describing: result.1?.localizedDescription))")
         }
        

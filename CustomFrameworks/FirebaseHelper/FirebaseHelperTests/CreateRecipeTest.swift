@@ -25,9 +25,15 @@ class CreateRecipeTest: XCTestCase {
         let exp = expectation(description: "Create recipe")
 
         Task {
-            let (id, _) = await manager.addData(id: "1", data: data)
+            let result = await manager.addData(rootNode: "T1", data: data)
             exp.fulfill()
-            XCTAssertNotNil(id)
+            switch result{
+                case let .success(id):
+                XCTAssertEqual(id, "T1")
+            case let .failure(error):
+                XCTFail("Expect suceess but receive failed \(error)")
+            }
+          
         }
         wait(for: [exp], timeout: 10)
     }
@@ -51,21 +57,6 @@ class CreateRecipeTest: XCTestCase {
                 break
             }
             
-            
-//            let  recipeResult : Result<[RecipeCodable], Error> = data.toModel()//self.convertToModel(data: data)//data.toModel([RecipeCodable].self)
-//            
-//           // print("N> \(recipeResult)")
-//            
-//            switch recipeResult {
-//            case .success(let recipeList):
-//               // print("N> \(recipeList)")
-//                for recipe in recipeList {
-//                    print("N \(recipe.id)")
-//                }
-//            case .failure(let error):
-//                print("Error: \(error)")
-//            }
-
             exp.fulfill()
            
         }
@@ -84,7 +75,7 @@ class CreateRecipeTest: XCTestCase {
 
     func getDummyData1() -> [String: Any] {
         return [
-            "id": " 9F307066-5060-4244-A50D-13948E96C267",
+            "id": "T1",
             "name": "Egg Pudding",
             "rating": 4.5,
             "instructions": "Firstly put some eggs and mixed with sugar. Then add milk and mix well. Trun on the stove and cook until the pudding is thick. Then add some chocolate chips and mix well. Around 30 mins cook the pudding is ready. Then cool down of it. Serve it into chilled and enjoy..",

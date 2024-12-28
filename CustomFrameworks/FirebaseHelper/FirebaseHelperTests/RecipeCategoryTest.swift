@@ -22,9 +22,41 @@ final class RecipeCategoryTest: XCTestCase {
         let exp = expectation(description: "Create Category")
 
         Task {
-            let (id,_) = await manager.addSingleData(id: catBreakfast.id,data: data)
+            let result = await manager.addData(rootNode: catBreakfast.id, data: data)
             exp.fulfill()
-            XCTAssertNotNil(id)
+            switch result {
+            case let .success (id):
+                XCTAssertNotNil(id)
+                break
+            case let .failure(error):
+                XCTAssertNil(error)
+                break
+            }
+        }
+        wait(for: [exp], timeout: 10)
+    }
+    
+    func test_fetch_success() {
+        let data = dummyCat
+        let manager = makeSUT()
+        let exp = expectation(description: "Fetch cat")
+
+        Task {
+            let result = await manager.fetchDataList()
+           // print("Result is \(result)")
+
+            
+            switch result {
+            case let .success(data):
+                XCTAssertNotNil(data)
+                break
+
+            case let .failure(error):
+                break
+            }
+            
+            exp.fulfill()
+           
         }
         wait(for: [exp], timeout: 10)
     }

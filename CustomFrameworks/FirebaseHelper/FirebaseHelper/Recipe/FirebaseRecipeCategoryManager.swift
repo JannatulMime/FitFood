@@ -12,8 +12,8 @@ import Foundation
 
 public class FirebaseRecipeCategoryManager {
     
-    public typealias CreateResult = (String?, Error?)
-    public typealias FetchListResult = ([RecipeCategory]?, Error?)
+//    public typealias CreateResult = (String?, Error?)
+//    public typealias FetchListResult = ([RecipeCategory]?, Error?)
 
     let firestore = Firestore.firestore()
     let collectionRef: CollectionReference
@@ -34,50 +34,59 @@ public class FirebaseRecipeCategoryManager {
 //        }
 //    }
     
-    public func addSingleData(id : String, data: [String: Any]) async -> CreateResult {
+    
+    public func addData(rootNode : String , data : [String: Any]) async -> FirebaseClient.CreateResult {
         do {
-           // let data = category.toDictionary()
-            _ = try await collectionRef.document(id).setData(data)
-            return (id, nil)
+            print("data is - \(data)")
+            let _ = try await collectionRef.document(rootNode).setData(data)//documentRef.addDocument(data: data)
+            return .success(rootNode)
         } catch {
             // print("in catch")
-            return (nil, error)
+            return .failure(error)
         }
     }
-
-    public func fetchDataList() async -> FetchListResult {
+    
+    public func fetchDataList() async -> FirebaseClient.FetchListResult {
         do {
             let snapshot = try await collectionRef.getDocuments()
-            let codableList: [RecipeCategoryCodable] = try snapshot.decoded()
-            let categoryList: [RecipeCategory] = codableList.map { $0.toRecipeCategory() }
-
-            print("datas count \(codableList.count)")
-
-            for data in categoryList {
-                print("data", data)
-            }
-
-            return (categoryList, nil)
+            let data: [[String: Any]] = snapshot.documents.map { $0.data() }
+            return .success(data)
         } catch {
             print("e \(error.localizedDescription)")
-            return (nil, error)
+            return .failure(error)
         }
-
-//        collectionRef.getDocuments { snapshot, _ in
-//            do {
-//                let codableRecipeList :  [RecipeCodable] = try snapshot?.decoded() ?? []
-//                let recipeList : [Recipe] = codableRecipeList.map{$0.toRecipe()}
-//               // print("datas count \(datas.count)")
-//
-//                return (recipeList, nil)
-        ////                for data in datas {
-        ////                    print("data", data)
-        ////                }
-//            } catch {
-//                return (nil, error)
-//            }
-//        }
     }
+
+    
+//    public func addSingleData(id : String, data: [String: Any]) async -> CreateResult {
+//        do {
+//           // let data = category.toDictionary()
+//            _ = try await collectionRef.document(id).setData(data)
+//            return (id, nil)
+//        } catch {
+//            // print("in catch")
+//            return (nil, error)
+//        }
+//    }
+//
+//    public func fetchDataList() async -> FetchListResult {
+//        do {
+//            let snapshot = try await collectionRef.getDocuments()
+//            let codableList: [RecipeCategoryCodable] = try snapshot.decoded()
+//            let categoryList: [RecipeCategory] = codableList.map { $0.toRecipeCategory() }
+//
+//            print("datas count \(codableList.count)")
+//
+//            for data in categoryList {
+//                print("data", data)
+//            }
+//
+//            return (categoryList, nil)
+//        } catch {
+//            print("e \(error.localizedDescription)")
+//            return (nil, error)
+//        }
+//    }
 }
 
 

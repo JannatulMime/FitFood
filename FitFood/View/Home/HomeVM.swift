@@ -36,6 +36,13 @@ class HomeVM: ObservableObject {
     }
 }
 
+class FetchRecipeService {
+    let firebaseRecipeManager = FirebaseRecipeManager(root: "Test")
+//    func getPopularRecipeList() async throws -> [Recipe] {
+//        
+//    }
+}
+
 
 
 

@@ -61,11 +61,19 @@ class CreateRecipeVM: ObservableObject {
 
         Task {
             let categoriesResult = await firebaseCategoryManager.fetchDataList()
-            if let categories = categoriesResult.0 {
-                DispatchQueue.main.async { [weak self] in
-                    self?.categoryList = categories
+            
+            if let categories = try? categoriesResult.get() {
+                DispatchQueue.main.async {
+                    let a : [RecipeCategoryCodable]? = try? categories.toModel().get()
+                    self.categoryList = a?.map{$0.toRecipeCategory()} ?? []
                 }
             }
+            
+//            if let categories = categoriesResult.0 {
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.categoryList = categories
+//                }
+//            }
         }
     }
 
@@ -88,10 +96,10 @@ class CreateRecipeVM: ObservableObject {
             let newRecipe = Recipe(id: UUID().uuidString, name: title, ingredients: ingredients, instructions: description.toHtml() ?? "", image: imagePath, category: catBreakfast, rating: 5.0, time: duration, calories: "100", tags: dummyTags1)
            
             let data : [String:Any] = newRecipe.toDictionary()
-            let result = await firebasRecipeManager.addData(id: newRecipe.id,data: data)
+            let result = await firebasRecipeManager.addData(rootNode: newRecipe.id, data: data)
             
-            if result.0 != nil {
-                print("recipe Id : \( String(describing: result.0))")
+            if try result.get() != nil {
+                print("recipe Id : \( String(describing: try result.get()))")
             }
         }
     }
